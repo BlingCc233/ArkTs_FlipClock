@@ -11,6 +11,611 @@
     {
       "name": "MainAbility_label",
       "value": "Clock"
+    },
+
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "AnimationCollection"
+    },
+    {
+      "name": "common_bar_chart_height",
+      "value": "30%"
+    },
+    {
+      "name": "common_text_height",
+      "value": "40%"
+    },
+    {
+      "name": "common_text_width",
+      "value": "40%"
+    },
+    {
+      "name": "divider_height",
+      "value": "26%"
+    },
+    {
+      "name": "common_stack_height",
+      "value": "50%"
+    },
+    {
+      "name": "common_stack_width",
+      "value": "100%"
+    },
+    {
+      "name": "common_navigation_height",
+      "value": "60%"
+    },
+    {
+      "name": "common_navigation_width",
+      "value": "90%"
+    },
+    {
+      "name": "search_placeholder",
+      "value": "Please enter your search..."
+    },
+    {
+      "name": "memo_counts",
+      "value": "8 notes"
+    },
+    {
+      "name": "memo_title",
+      "value": "All notes"
+    },
+    {
+      "name": "shared_desc",
+      "value": "Swipe the list to the last browsing history"
+    },
+    {
+      "name": "near_message",
+      "value": "People Nearby"
+    },
+    {
+      "name": "friendMomentsPage_share",
+      "value": "Share"
+    },
+    {
+      "name": "friends_circle_likes",
+      "value": "Like"
+    },
+    {
+      "name": "friendMomentsPage_message",
+      "value": "Review"
+    },
+    {
+      "name": "jump_to_history",
+      "value": "Jump to a location you haven't seen yet"
+    },
+    {
+      "name": "jump_to_top",
+      "value": "Jump To Top"
+    },
+    {
+      "name": "jump_text_one",
+      "value": "This is message number %d£º"
+    },
+    {
+      "name": "text_welcome",
+      "value": "欢迎 ！！！"
+    },
+    {
+      "name": "text_new_user_registration",
+      "value": "新用户享特别大礼包！"
+    },
+    {
+      "name": "text_load",
+      "value": "登录/注册"
+    },
+    {
+      "name": "text_shopping",
+      "value": "购物区"
+    },
+    {
+      "name": "text_happy",
+      "value": "娱乐区"
+    },
+    {
+      "name": "text_relaxation",
+      "value": "休闲区"
+    },
+    {
+      "name": "text_mine",
+      "value": "我的"
+    },
+    {
+      "name": "sound_hound",
+      "value": "听歌识曲"
+    },
+    {
+      "name": "is_listening",
+      "value": "正在聆听..."
+    },
+    {
+      "name": "click_to_listen",
+      "value": "点击开始识曲"
+    },
+    {
+      "name": "full_size",
+      "value": "100%"
+    },
+    {
+      "name": "page_show",
+      "value": "page from package"
+    },
+    {
+      "name": "my_trip",
+      "value": "我的行程"
+    },
+    {
+      "name": "plan_text",
+      "value": "计划出发"
+    },
+    {
+      "name": "ticket_entrance",
+      "value": "检票口:"
+    },
+    {
+      "name": "vehicle_model",
+      "value": "车型:"
+    },
+    {
+      "name": "marquee_title",
+      "value": "跑马灯案例"
+    },
+    {
+      "name": "marquee_content",
+      "value": "文本宽度过宽时，则实现跑马灯效果(文本循环滚动，每循环一次之后会停滞一段时间后再滚动)"
+    },
+    {
+      "name": "train_number_data_1",
+      "value": "K101"
+    },
+    {
+      "name": "whole_course_data_1",
+      "value": "全程2h8m/100km"
+    },
+    {
+      "name": "time_difference_data_1",
+      "value": "距出发 50m"
+    },
+    {
+      "name": "origin_data",
+      "value": "北京"
+    },
+    {
+      "name": "destination_data_1",
+      "value": "上海"
+    },
+    {
+      "name": "ticket_entrance_data_1",
+      "value": "候车地点:第七候车室"
+    },
+    {
+      "name": "vehicle_model_data_1",
+      "value": "普快"
+    },
+    {
+      "name": "whole_course_data_2",
+      "value": "全程2h8m/100km"
+    },
+    {
+      "name": "time_difference_data_2",
+      "value": "距出发 14h50m"
+    },
+    {
+      "name": "destination_data_2",
+      "value": "洛阳"
+    },
+    {
+      "name": "ticket_entrance_data_2",
+      "value": "检票口15A"
+    },
+    {
+      "name": "vehicle_model_data_2",
+      "value": "高铁"
+    },
+    {
+      "name": "scroll_width",
+      "value": "40%"
+    },
+    {
+      "name": "ohos_id_text_size_headline",
+      "value": "20"
+    },
+    {
+      "name": "ohos_id_text_font_family_medium",
+      "value": "medium"
+    },
+    {
+      "name": "ohos_id_text_size_body1",
+      "value": "16"
+    },
+    {
+      "name": "ohos_id_text_size_body2",
+      "value": "14"
+    },
+    {
+      "name": "ohos_id_text_size_body3",
+      "value": "12"
+    },
+    {
+      "name": "ohos_id_text_size_caption",
+      "value": "10"
+    },
+    {
+      "name": "ohos_id_corner_radius_default_l",
+      "value": "16"
+    },
+    {
+      "name": "ohos_id_corner_radius_default_m",
+      "value": "12"
+    },
+    {
+      "name": "ohos_id_corner_radius_subtab",
+      "value": "4"
+    },
+    {
+      "name": "ohos_id_card_margin_start",
+      "value": "12"
+    },
+    {
+      "name": "ohos_id_card_padding_start",
+      "value": "12"
+    },
+    {
+      "name": "ohos_id_elements_margin_vertical_m",
+      "value": "8"
+    },
+    {
+      "name": "ohos_id_elements_margin_vertical_l",
+      "value": "16"
+    },
+    {
+      "name": "width_ninety_percent",
+      "value": "90%"
+    },
+    {
+      "name": "width_full",
+      "value": "100%"
+    },
+    {
+      "name": "name_page_one",
+      "value": "拼车"
+    },
+    {
+      "name": "name_page_two",
+      "value": "打车"
+    },
+    {
+      "name": "name_page_three",
+      "value": "赚钱"
+    },
+    {
+      "name": "name_page_four",
+      "value": "公交车"
+    },
+    {
+      "name": "first_prompt",
+      "value": "6折起"
+    },
+    {
+      "name": "sec_prompt",
+      "value": "8折起"
+    },
+    {
+      "name": "five_fr",
+      "value": "1fr 1fr 1fr 1fr 1fr"
+    },
+    {
+      "name": "two_fr",
+      "value": "1fr 1fr"
+    },
+    {
+      "name": "function_tool_bar",
+      "value": "功能栏"
+    },
+    {
+      "name": "other_login_methods",
+      "value": "其他号码登录/注册"
+    },
+    {
+      "name": "login_in",
+      "value": "本机号码一键登录"
+    },
+    {
+      "name": "read_and_check",
+      "value": "请阅读并勾选协议"
+    },
+    {
+      "name": "read_and_agreed",
+      "value": "我已阅读并同意"
+    },
+    {
+      "name": "services_and_policies",
+      "value": "「**账号服务与隐私政策」"
+    },
+    {
+      "name": "service_agreement",
+      "value": "「服务协议」"
+    },
+    {
+      "name": "privacy_policy",
+      "value": "「隐私政策」"
+    },
+    {
+      "name": "and",
+      "value": "和"
+    },
+    {
+      "name": "phone_number",
+      "value": "188******88"
+    },
+    {
+      "name": "reason",
+      "value": "get vibrate permission"
+    },
+    {
+      "name": "login_text",
+      "value": "登录成功，仅演示"
+    },
+    {
+      "name": "prompt_text",
+      "value": "仅演示，可自行实现业务功能"
+    },
+    {
+      "name": "title_name",
+      "value": "当前进度"
+    },
+    {
+      "name": "search_background_color",
+      "value": "#E7E9E8"
+    },
+    {
+      "name": "main_page_top_borderRadius",
+      "value": "8"
+    },
+    {
+      "name": "search_height",
+      "value": "40"
+    },
+    {
+      "name": "search_history",
+      "value": "搜索历史"
+    },
+    {
+      "name": "search_history_font_size2",
+      "value": "16"
+    },
+    {
+      "name": "search_history_delete_size",
+      "value": "20"
+    },
+    {
+      "name": "search_delete_title",
+      "value": "确认删除全部历史记录"
+    },
+    {
+      "name": "delete_back",
+      "value": "取消"
+    },
+    {
+      "name": "button_text_color",
+      "value": "#0000FF"
+    },
+    {
+      "name": "delete_ok",
+      "value": "确认"
+    },
+    {
+      "name": "search_history_text_padding_margin1",
+      "value": "16"
+    },
+    {
+      "name": "search_divider_height",
+      "value": "1"
+    },
+    {
+      "name": "search_history_font_size3",
+      "value": "14"
+    },
+    {
+      "name": "search_list_text_color",
+      "value": "#F5F6F8"
+    },
+    {
+      "name": "search_history_text_padding_margin3",
+      "value": "6"
+    },
+    {
+      "name": "search_back_size_margin",
+      "value": "20"
+    },
+    {
+      "name": "search_history_text_padding_margin4",
+      "value": "10"
+    },
+    {
+      "name": "search_history_text_padding_margin2",
+      "value": "12"
+    },
+    {
+      "name": "search_list_image_width",
+      "value": "16"
+    },
+    {
+      "name": "main_page_padding",
+      "value": "12"
+    },
+    {
+      "name": "main_page_padding_top",
+      "value": "40"
+    },
+    {
+      "name": "swiper_stack_width",
+      "value": "310"
+    },
+    {
+      "name": "swiper_stack_height1",
+      "value": "130"
+    },
+    {
+      "name": "swiper_stack_height2",
+      "value": "180"
+    },
+    {
+      "name": "main_page_swiper_height",
+      "value": "200"
+    },
+    {
+      "name": "main_page_padding2",
+      "value": "12"
+    },
+    {
+      "name": "main_page_padding5",
+      "value": "8"
+    },
+    {
+      "name": "bottom_title_height",
+      "value": "36"
+    },
+    {
+      "name": "digital_scroll_animation_ticket",
+      "value": "下拉抢火车票"
+    },
+    {
+      "name": "digital_scroll_animation_today",
+      "value": "今日为"
+    },
+    {
+      "name": "digital_scroll_animation_get_ticket",
+      "value": "人提供抢票服务"
+    },
+    {
+      "name": "digital_scroll_animation_comma",
+      "value": ","
+    },
+    {
+      "name": "max_size",
+      "value": "100%"
+    },
+    {
+      "name": "card_swiper_full_size",
+      "value": "100%"
+    },
+    {
+      "name": "card_swiper_photo_preview_width",
+      "value": "90%"
+    },
+    {
+      "name": "card_swiper_tablet_preview_width",
+      "value": "45%"
+    },
+    {
+      "name": "voting_component_voting_theme_image_text",
+      "value": "大家冬天喜欢早起还是晚起呀"
+    },
+    {
+      "name": "voting_component_mid_text_left",
+      "value": "P"
+    },
+    {
+      "name": "voting_component_mid_text_right",
+      "value": "K"
+    },
+    {
+      "name": "voting_component_first_stack_width",
+      "value": "80%"
+    },
+    {
+      "name": "voting_component_parent_column_height",
+      "value": "100%"
+    },
+    {
+      "name": "voting_component_parent_column_width",
+      "value": "100%"
+    },
+    {
+      "name": "voting_component_bottom_text_suffix",
+      "value": "人参与"
+    },
+    {
+      "name": "voting_component_mid_gap_mark_anchor",
+      "value": "50vp"
+    },
+    {
+      "name": "voting_notice",
+      "value": "点击上方按钮，选择你的观点"
+    },
+    {
+      "name": "voice_record_dynamic_effect_width_full",
+      "value": "100%"
+    },
+    {
+      "name": "voice_record_dynamic_effect_height_full",
+      "value": "100%"
+    },
+    {
+      "name": "voice_record_dynamic_effect_top_fig",
+      "value": "上划取消"
+    },
+    {
+      "name": "voice_record_dynamic_effect_button",
+      "value": "按住说话"
+    },
+    {
+      "name": "voice_record_dynamic_effect_width_half",
+      "value": "50%"
+    },
+    {
+      "name": "voice_record_dynamic_effect_app_name",
+      "value": "需要权限"
+    },
+    {
+      "name": "voice_record_dynamic_effect_width_nine",
+      "value": "90%"
+    },
+    {
+      "name": "voice_record_dynamic_effect_friend",
+      "value": "群聊"
+    },
+    {
+      "name": "voice_record_dynamic_effect_color_stack",
+      "value": "#b92b2b2b"
+    },
+    {
+      "name": "voice_record_dynamic_effect_send_message",
+      "value": "松开发送"
+    },
+    {
+      "name": "voice_record_dynamic_effect_talk_info",
+      "value": "你在干嘛"
+    },
+    {
+      "name": "voice_record_dynamic_effect_talk_message",
+      "value": "？？？"
+    },
+    {
+      "name": "voice_record_dynamic_effect_talk_message_one",
+      "value": "好多人一起"
+    },
+    {
+      "name": "voice_record_dynamic_effect_talk_message_two",
+      "value": "有时间吗"
+    },
+    {
+      "name": "voice_record_dynamic_effect_talk_message_thr",
+      "value": "去哪里玩"
+    },
+    {
+      "name": "voice_record_dynamic_effect_talk_message_four",
+      "value": "自驾周边游"
     }
   ]
 }

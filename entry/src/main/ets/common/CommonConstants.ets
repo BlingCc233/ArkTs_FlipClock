@@ -61,4 +61,35 @@ export default class CommonConstants {
    */
   static readonly HOURS: Array<string> = ['3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '1', '2'];
 
+
+  static readonly MAX_HOUR_NUMBER: number = 24;
+
+  static readonly MAX_MIN_NUMBER: number = 60;
+
+  static readonly MAX_SEC_NUMBER: number = 60;
+
+  /**
+   * Percent zero.
+   */
+  static readonly PERCENT_ZERO: string = '0%';
+
+  /**
+   * Percent half.
+   */
+  static readonly PERCENT_HALF: string = '50%';
+  static readonly PERCENT_MAX: string = '100%';
+  /**
+   * Timer delay.
+   */
+  static readonly TIMER_DELAY: number = 1000;
+
+  /**
+   * Animate duration.
+   */
+  static readonly ANIMATE_DURATION: number = 500;
+
+  /**
+   * Rotate angle.
+   */
+  static readonly ROTATE_ANGLE: number = -90;
 }
