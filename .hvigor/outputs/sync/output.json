@@ -1,0 +1,124 @@
+{
+  "ohos-module-entry": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main",
+        "RESOURCES_PATH": [
+          "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/outputs/default",
+          "INTERMEDIA_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates",
+          "JS_ASSETS_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/loader_out/default",
+          "JS_LITE_ASSETS_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/loader_out_lite/default",
+          "RES_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/res/default",
+          "RES_PROFILE_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/res/default/resources/base/profile",
+          "ETS_SUPER_VISUAL_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/cache/default/default@CompileArkTS/esmodule",
+          "JS_SUPER_VISUAL_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/cache/default/default@CompileJS/jsbundle",
+          "WORKER_LOADER": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/loader/default/loader.json",
+          "MANIFEST_JSON": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/manifest/default",
+          "OUTPUT_METADATA_JSON": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/hap_metadata/default/output_metadata.json"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/ohosTest",
+        "RESOURCES_PATH": [
+          "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/ohosTest/resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/outputs/ohosTest",
+          "INTERMEDIA_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates",
+          "JS_ASSETS_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/loader_out/ohosTest",
+          "JS_LITE_ASSETS_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/loader_out_lite/ohosTest",
+          "RES_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/res/ohosTest",
+          "RES_PROFILE_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/res/ohosTest/resources/base/profile",
+          "ETS_SUPER_VISUAL_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/cache/ohosTest/ohosTest@OhosTestCompileArkTS/esmodule",
+          "JS_SUPER_VISUAL_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/cache/ohosTest/ohosTest@OhosTestCompileJS/jsbundle",
+          "WORKER_LOADER": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/loader/ohosTest/loader.json",
+          "MANIFEST_JSON": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/manifest/ohosTest",
+          "OUTPUT_METADATA_JSON": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/hap_metadata/ohosTest/output_metadata.json"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    }
+  },
+  "ohos-project": {
+    "SELECT_PRODUCT_NAME": "default",
+    "MODULE_BUILD_DIR": "/Users/ccbling/DevecostudioProjects/arkts-clock/build",
+    "BUNDLE_NAME": "ohos.samples.etsclock",
+    "BUILD_PATH": {
+      "OUTPUT_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/build/outputs/default"
+    },
+    "MODULES": [
+      {
+        "name": "entry",
+        "srcPath": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry",
+        "targets": [
+          {
+            "name": "default",
+            "applyToProducts": [
+              "default"
+            ]
+          }
+        ]
+      }
+    ],
+    "PROFILE_OPT": {
+      "app": {
+        "signingConfigs": [],
+        "products": [
+          {
+            "name": "default",
+            "signingConfig": "default",
+            "compatibleSdkVersion": "5.0.0(12)",
+            "runtimeOS": "HarmonyOS"
+          }
+        ]
+      },
+      "modules": [
+        {
+          "name": "entry",
+          "srcPath": "./entry",
+          "targets": [
+            {
+              "name": "default",
+              "applyToProducts": [
+                "default"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "CONFIG_PROPERTIES": {
+      "enableSignTask": true,
+      "skipNativeIncremental": false
+    }
+  },
+  "version": 1
+}

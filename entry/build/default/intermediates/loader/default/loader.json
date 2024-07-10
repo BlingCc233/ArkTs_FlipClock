@@ -1,0 +1,20 @@
+{
+  "modulePathMap": {
+    "entry": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry"
+  },
+  "compileMode": "esmodule",
+  "projectRootPath": "/Users/ccbling/DevecostudioProjects/arkts-clock",
+  "nodeModulesPath": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/loader_out/default/node_modules",
+  "moduleName": "entry",
+  "harNameOhmMap": {},
+  "packageManagerType": "ohpm",
+  "compileEntry": [],
+  "dynamicImportLibInfo": {},
+  "routerMap": [],
+  "hspResourcesMap": {},
+  "anBuildOutPut": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/loader_out/default/an/arm64-v8a",
+  "anBuildMode": "type",
+  "patchConfig": {
+    "changedFileList": "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/build/default/intermediates/patch/default/changedFileList.json"
+  }
+}

@@ -67,6 +67,8 @@ export default class CommonConstants {
   static readonly MAX_MIN_NUMBER: number = 60;
 
   static readonly MAX_SEC_NUMBER: number = 60;
+  static readonly FONT_WEIGHT_TAB: number = 250;
+  static readonly ANIMATION_DURATION: number = 300;
 
   /**
    * Percent zero.
@@ -86,7 +88,7 @@ export default class CommonConstants {
   /**
    * Animate duration.
    */
-  static readonly ANIMATE_DURATION: number = 500;
+  static readonly ANIMATE_DURATION: number = 600;
 
   /**
    * Rotate angle.

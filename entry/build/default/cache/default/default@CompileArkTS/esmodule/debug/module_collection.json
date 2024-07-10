@@ -1,0 +1,12 @@
+{
+  "entry/src/main/ets/pages/Index.ets": [
+    "ohos.display",
+    "ohos.hilog"
+  ],
+  "entry/src/main/ets/pages/Pomodoro.ets": [
+    "ohos.display"
+  ],
+  "entry/src/main/ets/pages/PageTurningAnimation.ets": [
+    "ohos.display"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "entry/src/main/ets/entryability/EntryAbility.ets": [
+    "If"
+  ],
+  "entry/src/main/ets/pages/Index.ets": [
+    "Column",
+    "Text",
+    "Tabs",
+    "ForEach",
+    "TabContent",
+    "Flex",
+    "If"
+  ],
+  "entry/src/main/ets/pages/FlipClock.ets": [
+    "Column",
+    "Divider",
+    "Text",
+    "Row",
+    "Image",
+    "If"
+  ],
+  "entry/src/main/ets/pages/Pomodoro.ets": [
+    "Image",
+    "Column",
+    "Gauge",
+    "Text",
+    "Button"
+  ],
+  "entry/src/main/ets/pages/PageTurningAnimation.ets": [
+    "Column",
+    "Text",
+    "Stack",
+    "Rect",
+    "If"
+  ]
+}

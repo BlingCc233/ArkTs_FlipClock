@@ -18,6 +18,10 @@
       "value": "#3c3c3c"
     },
     {
+      "name": "text_bg",
+      "value": "#000000"
+    },
+    {
       "name": "stack_background_color",
       "value": "#232323"
     },

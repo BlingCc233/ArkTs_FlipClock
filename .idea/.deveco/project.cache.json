@@ -1,0 +1,16 @@
+{
+	"BuildOptions":{
+		"BUNDLE_NAME":"ohos.samples.etsclock",
+		"SELECT_BUILD_MODE":"",
+		"BUILD_PATH":{
+			"OUTPUT_PATH":"/Users/ccbling/DevecostudioProjects/arkts-clock/build/outputs/default"
+		},
+		"SELECT_BUILD_PRODUCT":"default"
+	},
+	"CommonInfo":{
+		"crossplatform.projectType":"",
+		"project.ide.version":"5.0.3.403",
+		"current.select.product":"default",
+		"current.select.buildMode":""
+	}
+}
