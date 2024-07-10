@@ -39,16 +39,16 @@
       "BUILD_MODE": "debug"
     }
   },
-  "totalTime": 5682277417,
+  "totalTime": 5627287375,
   "moduleNum": 1,
   "taskTime": {
-    "compileArkTS": 3757786375,
+    "compileArkTS": 2076221416,
     "buildArkTS": 0,
     "compileJS": 0,
-    "buildJS": 11161042,
+    "buildJS": 1144417,
     "compileResource": 0,
-    "packageHap": 752311084,
-    "signHap": 1405667
+    "packageHap": 2344893291,
+    "signHap": 12767625
   },
   "isIncremental": true,
   "hasIncremental": true,

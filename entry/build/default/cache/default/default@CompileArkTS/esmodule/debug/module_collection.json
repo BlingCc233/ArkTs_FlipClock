@@ -5,8 +5,5 @@
   ],
   "entry/src/main/ets/pages/Pomodoro.ets": [
     "ohos.display"
-  ],
-  "entry/src/main/ets/pages/PageTurningAnimation.ets": [
-    "ohos.display"
   ]
 }

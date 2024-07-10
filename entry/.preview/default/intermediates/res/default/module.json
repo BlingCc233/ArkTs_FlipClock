@@ -15,6 +15,8 @@
 		"bundleType":	"app",
 		"debug":	true,
 		"iconId":	16777216,
+		"labelId":	16777217,
+		"iconId":	16777216,
 		"labelId":	16777217
 	},
 	"module":	{
@@ -43,12 +45,18 @@
 				"iconId":	16777434,
 				"labelId":	16777284,
 				"startWindowIconId":	16777434,
+				"startWindowBackgroundId":	16777282,
+				"descriptionId":	16777283,
+				"iconId":	16777434,
+				"labelId":	16777284,
+				"startWindowIconId":	16777434,
 				"startWindowBackgroundId":	16777282
 			}],
 		"packageName":	"entry",
 		"virtualMachine":	"ark12.0.2.0",
 		"compileMode":	"esmodule",
 		"dependencies":	[],
+		"descriptionId":	16777308,
 		"descriptionId":	16777308
 	}
 }

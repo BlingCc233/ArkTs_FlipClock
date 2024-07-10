@@ -80,7 +80,7 @@ export struct FlipClock {
       Divider()
         .zIndex(5)
         .strokeWidth(3)
-        .color(0x3c3c3c)
+        .color(0x232323)
         .position({ x: 0, y: '50%' })
 
       Text(`${this.timeOne[num]}`)
