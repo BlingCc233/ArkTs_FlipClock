@@ -16,6 +16,5 @@
 - [ ] 数据持久化
 
 ## 示例图片
-![image](./screenshot/sample1.gif)
-
+<img src="./screenshot/sample1.gif" width="200px"/> 
 
