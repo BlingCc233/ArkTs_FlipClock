@@ -2,14 +2,13 @@
 import {FlipClock} from './FlipClock'
 import Constants from '../common/CommonConstants';
 import { display, RectShape } from '@kit.ArkUI';
-import WindowModel from '../utils/WindowModel';
-import { GlobalContext } from '../utils/GlobalContext';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { initTabData } from '../viewmodel/TabViewModel';
 import { TabItem } from '../viewmodel/TabItem';
-import { window } from '@kit.ArkUI';
-import {Pomodoro} from './Pomodoro'
-import {PageTurningAnimation, enumT} from './PageTurningAnimation'
+import {Pomodoro} from './Pomodoro';
+import {PageTurningAnimation, enumT} from './PageTurningAnimation';
+import {Cofeeling} from './Cofeeling'
+
 
 
 
@@ -65,11 +64,31 @@ struct Index {
 struct EachContent {
   @Prop whichPage: number;
   private widthPx: number = display.getDefaultDisplaySync().width;
+  @State isRotate : boolean = false;
+  private time = new Date();
+  @State rotaAngle: number = 0;
+  @State offsetPos: string = '0';
+  @State textOpacity : number = 1;
+
+  private clockAnime(){
+    animateTo({
+      duration: 600,
+      curve: Curve.FastOutSlowIn,
+      delay: 0,
+      iterations: 1,
+      onFinish: () => {
+      }
+    }, () => {
+      this.rotaAngle = this.isRotate ? 90 : 0;
+      this.textOpacity = this.isRotate ? 0 : 1;
+      this.offsetPos = this.isRotate ? `${px2vp(this.widthPx) * 0.085}vp` : '0';
+    })
+  }
 
   build() {
     Column() {
       if (this.whichPage == 1) {
-        Pomodoro();
+        Pomodoro()
       }
       if (this.whichPage == 0) {
         Flex({
@@ -77,12 +96,33 @@ struct EachContent {
           justifyContent: FlexAlign.Center,
           alignItems: ItemAlign.Center
         }) {
+          Row() {
+            Text(`${this.time.getFullYear().toString()} - ${this.time.getMonth() % 10 == this.time.getMonth() ? '0' :
+              ''}${this.time.getMonth().toString()} - ${this.time.getDate() % 10 == this.time.getDate() ? '0' :
+              ''}${this.time.getDate().toString()}`)
+              .fontColor('#aaa')
+              .fontSize('23vp')
+              .opacity(this.textOpacity)
+            Image($r('app.media.rotate'))
+              .fillColor('#aaa')
+              .width('28vp')
+              .height('27vp')
+              .padding({top:4,left:6})
+              .onClick(()=>{
+                this.isRotate = !this.isRotate;
+                this.clockAnime();
+              })
+          }
+          .translate({ x: 0, y: `${px2vp(this.widthPx) * 0.1}vp` })
+
+
           PageTurningAnimation({
             axis: [0, 0, 0, 1, 0, 0],
             rotaRate: -90,
             originalAngle: 0,
             timeT: enumT.HOUR
           })
+            .rotate({x:0,y:0,z:1,centerX:'50%',centerY:'50%',angle: this.rotaAngle})
           PageTurningAnimation({
             axis: [0, 0, 0, 1, 0, 0],
             rotaRate: -90,
@@ -90,6 +130,7 @@ struct EachContent {
             timeT: enumT.MIN
 
           }).translate({x:0,y:`-${px2vp(this.widthPx) * 0.2}vp`})
+            .rotate({x:0,y:0,z:1,angle: this.rotaAngle})
           PageTurningAnimation({
             axis: [0, 0, 0, 1, 0, 0],
             rotaRate: -90,
@@ -97,7 +138,12 @@ struct EachContent {
             timeT: enumT.SEC
 
           }).translate({x:0,y:`-${px2vp(this.widthPx) * 0.4}vp`})
+            .rotate({x:0,y:0,z:1,angle: this.rotaAngle})
+
         }
+        .offset({
+          x:this.offsetPos,
+          y:this.offsetPos})
         .width(Constants.PERCENT_MAX)
         .height(Constants.PERCENT_MAX)
         .backgroundColor($r('app.color.stack_background_color'))

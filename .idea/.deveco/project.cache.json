@@ -1,6 +1,6 @@
 {
 	"BuildOptions":{
-		"BUNDLE_NAME":"ohos.samples.etsclock",
+		"BUNDLE_NAME":"com.blingcc.flipclock",
 		"SELECT_BUILD_MODE":"",
 		"BUILD_PATH":{
 			"OUTPUT_PATH":"/Users/ccbling/DevecostudioProjects/arkts-clock/build/outputs/default"

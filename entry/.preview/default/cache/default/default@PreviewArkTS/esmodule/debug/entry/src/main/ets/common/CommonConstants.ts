@@ -86,4 +86,21 @@ export default class CommonConstants {
      * Rotate angle.
      */
     static readonly ROTATE_ANGLE: number = -90;
+    static readonly LIST_HEIGHT: number = 48;
+    static readonly FULL_WIDTH: string = '100%';
+    static readonly DIVIDER_HEIGHT: number = 0.5;
+    static readonly DIVIDER_DRAWER_WIDTH: string = '90%';
+    static readonly DIVIDER_WIDTH: string = '93%';
+    static readonly DRAWER_WIDTH: number = 264;
+    static readonly BORDER_RADIUS_DRAWER: number = 16;
+    static readonly LIST_IMAGE_HEIGHT_WIDTH: number = 40;
+    static readonly LIST_CARD_WIDTH: number = 272;
+    static readonly LIST_CARD_HEIGHT: number = 344;
+    static readonly BORDER_RADIUS_DRAWER_CONTENT: number = 20;
+    static readonly FULL_HEIGHT: string = '100%';
+    static readonly LIST_CONTENT_HEIGHT: string = '110%';
+    static readonly MARGIN_SIXTEEN: number = 16;
+    static readonly MARGIN_BUTTON_TOP: number = 48;
+    static readonly SUB_LIST_WIDTH: string = '85%';
+    static readonly TRANSLATE_TOP: number = -40;
 }

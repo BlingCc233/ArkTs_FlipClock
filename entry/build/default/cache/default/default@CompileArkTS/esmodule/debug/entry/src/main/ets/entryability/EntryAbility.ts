@@ -23,6 +23,17 @@ export default class EntryAbility extends UIAbility {
             windowClass = data;
             let isLayoutFullScreen = true;
             try {
+                let promise = windowClass.setSpecificSystemBarEnabled('navigationIndicator', false);
+                promise.then(() => {
+                    console.info('Succeeded in setting the system bar to be invisible.');
+                }).catch((err: BusinessError) => {
+                    console.error(`Failed to set the system bar to be invisible. Cause code: ${err.code}, message: ${err.message}`);
+                });
+            }
+            catch (exception) {
+                console.error(`Failed to set the system bar to be invisible. Cause code: ${exception.code}, message: ${exception.message}`);
+            }
+            try {
                 let promise = windowClass.setWindowLayoutFullScreen(isLayoutFullScreen);
                 promise.then(() => {
                     console.info('Succeeded in setting the window layout to full-screen mode.');

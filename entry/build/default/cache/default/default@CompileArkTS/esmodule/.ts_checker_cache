@@ -147,7 +147,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/entryability/EntryAbility.ets": {
-      "mtimeMs": 1720493085104.8496,
+      "mtimeMs": 1720582546204.4744,
       "children": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.AbilityKit.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.PerformanceAnalysisKit.d.ts",
@@ -1726,7 +1726,8 @@
       "children": [],
       "parent": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.arkui.UIContext.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts",
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets"
       ],
       "error": false
     },
@@ -1818,7 +1819,8 @@
       "children": [],
       "parent": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.arkui.UIContext.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts",
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets"
       ],
       "error": false
     },
@@ -3274,16 +3276,17 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/common/CommonConstants.ets": {
-      "mtimeMs": 1720539893835.661,
+      "mtimeMs": 1720677974279.9688,
       "children": [],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets",
-        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/PageTurningAnimation.ets"
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/PageTurningAnimation.ets",
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets"
       ],
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets": {
-      "mtimeMs": 1720573583919.9849,
+      "mtimeMs": 1720697496799.033,
       "children": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/FlipClock.ets",
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/common/CommonConstants.ets",
@@ -4243,7 +4246,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/FlipClock.ets": {
-      "mtimeMs": 1720573557958.3855,
+      "mtimeMs": 1720590920348.5745,
       "children": [],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets"
@@ -4251,9 +4254,13 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets": {
-      "mtimeMs": 1720578152667.1924,
+      "mtimeMs": 1720746546427.2417,
       "children": [
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.measure.d.ts",
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/common/CommonConstants.ets",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.font.d.ts"
       ],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets"
@@ -4261,7 +4268,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/PageTurningAnimation.ets": {
-      "mtimeMs": 1720573495310.8064,
+      "mtimeMs": 1720684076140.847,
       "children": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts",
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/common/CommonConstants.ets"

@@ -9,6 +9,8 @@
     "ForEach",
     "TabContent",
     "Flex",
+    "Row",
+    "Image",
     "If"
   ],
   "entry/src/main/ets/pages/FlipClock.ets": [
@@ -21,10 +23,23 @@
   ],
   "entry/src/main/ets/pages/Pomodoro.ets": [
     "Image",
+    "Stack",
     "Column",
     "Gauge",
     "Text",
-    "Button"
+    "Flex",
+    "Row",
+    "Button",
+    "LongPressGesture",
+    "AlertDialog",
+    "RelativeContainer",
+    "List",
+    "ListItem",
+    "Blank",
+    "Toggle",
+    "TextPickerDialog",
+    "PanGesture",
+    "If"
   ],
   "entry/src/main/ets/pages/PageTurningAnimation.ets": [
     "Column",

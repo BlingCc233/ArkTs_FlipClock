@@ -1,0 +1,7 @@
+{
+  "defaultTime": 25,
+  "breakTime": 5,
+  "longBreak": 10,
+  "isRemind": true,
+  "isVibration": true
+}

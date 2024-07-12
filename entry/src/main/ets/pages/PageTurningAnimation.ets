@@ -20,7 +20,7 @@ export struct BookPage {
 
   build() {
     Column() {
-      Text(`${this.pageNum%10==this.pageNum? '0'+this.pageNum.toString() : this.pageNum}`)
+      Text(`${this.pageNum % 10 == this.pageNum ? '0' + this.pageNum.toString() : this.pageNum}`)
         .fontSize($r('app.float.common_font_size'))
         .fontColor(this.textColor)
         .fontWeight(FontWeight.Bold)
@@ -58,23 +58,49 @@ export struct PageTurningAnimation {
   @Prop rotaRate: number;
   @Prop originalAngle: number;
   @Prop timeT: enumT;
-  private timeData  = new Date();
-  private  oneSecondFromNow = new Date(this.timeData.getTime() + 1000);
+  private timeData = new Date();
+  private oneSecondFromNow = new Date(this.timeData.getTime() + 1000);
+  private oneSecondBeforeNow = new Date(this.timeData.getTime() - 1000);
   @State rotateAngleTextA: number = 0;
-  @State rotateAngleTextB: number = 0;
-  @State animatePageNumTextB: number = (this.timeT == enumT.HOUR)? this.oneSecondFromNow.getHours() : ((this.timeT == enumT.MIN)? this.oneSecondFromNow.getMinutes() : this.oneSecondFromNow.getSeconds());
-  @State nextPageNumTextD: number = (this.timeT == enumT.HOUR)? this.timeData.getHours() : ((this.timeT == enumT.MIN)? this.timeData.getMinutes() : this.timeData.getSeconds());
+  @State rotateAngleTextB: number = 90;
+  @State currentTime: number = (this.timeT == enumT.HOUR) ? this.timeData.getHours() :
+    ((this.timeT == enumT.MIN) ? this.timeData.getMinutes() : this.timeData.getSeconds());
+  @State nextTime: number = (this.timeT == enumT.SEC) ? this.oneSecondFromNow.getSeconds() : this.currentTime+1;
   @State bottomX: string = Constants.PERCENT_HALF;
   @State bottomY: string = Constants.PERCENT_HALF;
   @State centerX: string = Constants.PERCENT_HALF;
   @State centerY: string = Constants.PERCENT_HALF;
+  private isSync: boolean = (this.timeT == enumT.SEC);
   private timer: number = 0;
   private widthPx: number = display.getDefaultDisplaySync().width;
+  private isAni: boolean = false;
 
   aboutToAppear(): void {
     this.timer = setInterval(() => {
-      this.pageTurningAnimate();
-    }, this.timeT ? Constants.TIMER_DELAY : Constants.TIMER_DELAY * 100)
+      const time = new Date();
+      this.oneSecondFromNow = new Date(time.getTime() + 1000);
+      this.oneSecondBeforeNow = new Date(time.getTime() - 1000);
+
+        if (this.isSync) {
+          if (this.currentTime != time.getSeconds()) {
+            this.nextTime = this.oneSecondFromNow.getSeconds();
+            this.currentTime = time.getSeconds();
+            this.pageTurningAnimate2();
+          }
+        this.isSync = false;
+      }
+      if (!this.isSync) {
+        if(this.timeT == enumT.HOUR && time.getHours() != this.oneSecondBeforeNow.getHours() ){
+          this.pageTurningAnimate2();
+        }
+        if(this.timeT == enumT.MIN && time.getMinutes() != this.oneSecondBeforeNow.getMinutes() ){
+          this.pageTurningAnimate2();
+        }
+        if(this.timeT == enumT.SEC){
+          this.pageTurningAnimate2();
+        }
+      }
+    }, Constants.TIMER_DELAY)
   }
 
   aboutToDisappear(): void {
@@ -85,42 +111,58 @@ export struct PageTurningAnimation {
     animateTo({
       duration: Constants.ANIMATE_DURATION,
       onFinish: () => {
-        this.timeData  = new Date();
-        this.oneSecondFromNow = new Date(this.timeData.getTime() + 1000);
-        if((!this.oneSecondFromNow.getMinutes())&&(this.timeT == enumT.HOUR)){
-          this.rotateAngleTextA = 0;
+        if (this.timeT == enumT.HOUR) {
           this.rotateAngleTextB = 90;
-          this.animatePageNumTextB = (this.animatePageNumTextB+1) % Constants.MAX_HOUR_NUMBER;
-        }
-        if((!this.oneSecondFromNow.getSeconds())&&(this.timeT == enumT.MIN)){
-          this.rotateAngleTextA = 0;
-          this.rotateAngleTextB = 90;
-          this.animatePageNumTextB = (this.animatePageNumTextB+1) % Constants.MAX_MIN_NUMBER;
+          this.nextTime = (this.nextTime + 1) % Constants.MAX_HOUR_NUMBER;
 
         }
-        if(this.timeT == enumT.SEC){
-          this.rotateAngleTextA = 0;
+        if (this.timeT == enumT.MIN) {
           this.rotateAngleTextB = 90;
-          this.animatePageNumTextB = (this.oneSecondFromNow.getSeconds()) % Constants.MAX_SEC_NUMBER;
+          this.nextTime = (this.nextTime + 1) % Constants.MAX_MIN_NUMBER;
+
+        }
+        if (this.timeT == enumT.SEC) {
+          this.rotateAngleTextB = 90;
+          this.nextTime = (this.oneSecondFromNow.getSeconds()) % Constants.MAX_SEC_NUMBER;
 
         }
       }
     }, () => {
-      if((!this.oneSecondFromNow.getMinutes())&&(this.timeT == enumT.HOUR)) {
-        this.rotateAngleTextA = -90;
+      this.timeData = new Date();
+      this.oneSecondFromNow = new Date(this.timeData.getTime() + 1000);
+      if (this.timeT == enumT.HOUR) {
         this.rotateAngleTextB = 0;
-        this.nextPageNumTextD = this.animatePageNumTextB;
+        this.currentTime = this.nextTime;
+
       }
-      if((!this.oneSecondFromNow.getSeconds())&&(this.timeT == enumT.MIN)){
-        this.rotateAngleTextA = -90;
+      if (this.timeT == enumT.MIN) {
         this.rotateAngleTextB = 0;
-        this.nextPageNumTextD = this.animatePageNumTextB;
+        this.currentTime = this.nextTime;
+
       }
-      if(this.timeT == enumT.SEC){
-        this.rotateAngleTextA = -90;
+      if (this.timeT == enumT.SEC) {
         this.rotateAngleTextB = 0;
-        this.nextPageNumTextD = this.animatePageNumTextB;
+        this.currentTime = this.nextTime;
+
       }
+
+    })
+  }
+
+  private pageTurningAnimate2() {
+    animateTo({
+      duration: Constants.ANIMATE_DURATION,
+      onFinish: () => {
+
+
+          this.rotateAngleTextA = 0;
+          this.pageTurningAnimate();
+
+
+      }
+    }, () => {
+        this.rotateAngleTextA = -90;
+        this.isAni = true;
 
     })
   }
@@ -129,7 +171,7 @@ export struct PageTurningAnimation {
     Column() {
       Stack() {
         BookPage({
-          pageNum: (this.nextPageNumTextD) % 60,
+          pageNum: (this.nextTime) % 60,
           wordAngle: this.originalAngle,
           rotateAngle: 0,
           positionX: this.centerX,
@@ -139,7 +181,7 @@ export struct PageTurningAnimation {
         })
 
         BookPage({
-          pageNum: (this.animatePageNumTextB) % 60,
+          pageNum: (this.currentTime) % 60,
           wordAngle: this.originalAngle,
           rotateAngle: this.rotateAngleTextA,
           positionX: this.bottomX,
@@ -151,19 +193,19 @@ export struct PageTurningAnimation {
       .clip(true)
       .clipShape(new Rect({
         width: `${px2vp(this.widthPx) * 0.8}vp`,
-        height:`${px2vp(this.widthPx) * 0.2 * 0.98}vp`
+        height: `${px2vp(this.widthPx) * 0.2 * 0.98}vp`
       })
-        .radius([[16,16],[16,16],[0,0],[0,0]])
-        .offset({x:'-50%',y:'0%'})
+        .radius([[16, 16], [16, 16], [0, 0], [0, 0]])
+        .offset({ x: '-50%', y: '0%' })
 
       )
       .width(`${px2vp(this.widthPx) * 0.4}vp`)
       .height(`${px2vp(this.widthPx) * 0.4}vp`)
-      .translate({x:0,y:`${px2vp(this.widthPx) * 0.2}vp`})
+      .translate({ x: 0, y: `${px2vp(this.widthPx) * 0.2}vp` })
 
       Stack() {
         BookPage({
-          pageNum: (this.animatePageNumTextB) % 60,
+          pageNum: (this.currentTime) % 60,
           wordAngle: this.originalAngle,
           rotateAngle: 0,
           positionX: this.centerX,
@@ -173,7 +215,7 @@ export struct PageTurningAnimation {
         })
 
         BookPage({
-          pageNum: (this.nextPageNumTextD) % 60,
+          pageNum: (this.nextTime) % 60,
           wordAngle: this.originalAngle,
           rotateAngle: this.rotateAngleTextB,
           positionX: this.bottomX,
@@ -185,14 +227,15 @@ export struct PageTurningAnimation {
       .clip(true)
       .clipShape(new Rect({
         width: `${px2vp(this.widthPx) * 0.8}vp`,
-        height:`${px2vp(this.widthPx) * 0.2}vp`
+        height: `${px2vp(this.widthPx) * 0.2 * 0.98}vp`
       })
-        .radius([[0,0],[0,0],[16,16],[16,16]])
-        .offset({x:'-50%',y:'51%'})
+        .radius([[0, 0], [0, 0], [16, 16], [16, 16]])
+        .offset({ x: '-50%', y: '52%' })
       )
       .width(`${px2vp(this.widthPx) * 0.4}vp`)
       .height(`${px2vp(this.widthPx) * 0.4}vp`)
-      .translate({x:0,y:`-${px2vp(this.widthPx) * 0.2}vp`})
+      .translate({ x: 0, y: `-${px2vp(this.widthPx) * 0.2}vp` })
+
     }
   }
 }

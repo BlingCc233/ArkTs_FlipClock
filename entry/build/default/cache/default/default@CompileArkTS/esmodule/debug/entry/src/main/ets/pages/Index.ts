@@ -4,19 +4,24 @@ if (!("finalizeConstruction" in ViewPU.prototype)) {
 interface EachContent_Params {
     whichPage?: number;
     widthPx?: number;
+    isRotate?: boolean;
+    time?;
+    rotaAngle?: number;
+    offsetPos?: string;
+    textOpacity?: number;
 }
 interface Index_Params {
     tabArray?: Array<TabItem>;
     currentIndex?: number;
 }
-import { FlipClock } from "@bundle:ohos.samples.etsclock/entry/ets/pages/FlipClock";
-import Constants from "@bundle:ohos.samples.etsclock/entry/ets/common/CommonConstants";
+import { FlipClock } from "@bundle:com.blingcc.flipclock/entry/ets/pages/FlipClock";
+import Constants from "@bundle:com.blingcc.flipclock/entry/ets/common/CommonConstants";
 import display from "@ohos:display";
 import hilog from "@ohos:hilog";
-import { initTabData } from "@bundle:ohos.samples.etsclock/entry/ets/viewmodel/TabViewModel";
+import { initTabData } from "@bundle:com.blingcc.flipclock/entry/ets/viewmodel/TabViewModel";
 import type { TabItem } from '../viewmodel/TabItem';
-import { Pomodoro } from "@bundle:ohos.samples.etsclock/entry/ets/pages/Pomodoro";
-import { PageTurningAnimation, enumT } from "@bundle:ohos.samples.etsclock/entry/ets/pages/PageTurningAnimation";
+import { Pomodoro } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Pomodoro";
+import { PageTurningAnimation, enumT } from "@bundle:com.blingcc.flipclock/entry/ets/pages/PageTurningAnimation";
 class Index extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -89,7 +94,7 @@ class Index extends ViewPU {
             });
             Tabs.width(Constants.PERCENT_MAX);
             Tabs.height(Constants.PERCENT_MAX);
-            Tabs.backgroundColor({ "id": 16777420, "type": 10001, params: [], "bundleName": "ohos.samples.etsclock", "moduleName": "entry" });
+            Tabs.backgroundColor({ "id": 16777420, "type": 10001, params: [], "bundleName": "com.blingcc.flipclock", "moduleName": "entry" });
             Tabs.animationDuration(Constants.ANIMATION_DURATION);
             Tabs.onAnimationStart((index: number, targetIndex: number) => {
                 hilog.info(0x0000, 'index', index.toString());
@@ -150,6 +155,11 @@ class EachContent extends ViewPU {
         }
         this.__whichPage = new SynchedPropertySimpleOneWayPU(params.whichPage, this, "whichPage");
         this.widthPx = display.getDefaultDisplaySync().width;
+        this.__isRotate = new ObservedPropertySimplePU(false, this, "isRotate");
+        this.time = new Date();
+        this.__rotaAngle = new ObservedPropertySimplePU(0, this, "rotaAngle");
+        this.__offsetPos = new ObservedPropertySimplePU('0', this, "offsetPos");
+        this.__textOpacity = new ObservedPropertySimplePU(1, this, "textOpacity");
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
@@ -157,15 +167,38 @@ class EachContent extends ViewPU {
         if (params.widthPx !== undefined) {
             this.widthPx = params.widthPx;
         }
+        if (params.isRotate !== undefined) {
+            this.isRotate = params.isRotate;
+        }
+        if (params.time !== undefined) {
+            this.time = params.time;
+        }
+        if (params.rotaAngle !== undefined) {
+            this.rotaAngle = params.rotaAngle;
+        }
+        if (params.offsetPos !== undefined) {
+            this.offsetPos = params.offsetPos;
+        }
+        if (params.textOpacity !== undefined) {
+            this.textOpacity = params.textOpacity;
+        }
     }
     updateStateVars(params: EachContent_Params) {
         this.__whichPage.reset(params.whichPage);
     }
     purgeVariableDependenciesOnElmtId(rmElmtId) {
         this.__whichPage.purgeDependencyOnElmtId(rmElmtId);
+        this.__isRotate.purgeDependencyOnElmtId(rmElmtId);
+        this.__rotaAngle.purgeDependencyOnElmtId(rmElmtId);
+        this.__offsetPos.purgeDependencyOnElmtId(rmElmtId);
+        this.__textOpacity.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__whichPage.aboutToBeDeleted();
+        this.__isRotate.aboutToBeDeleted();
+        this.__rotaAngle.aboutToBeDeleted();
+        this.__offsetPos.aboutToBeDeleted();
+        this.__textOpacity.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -177,6 +210,49 @@ class EachContent extends ViewPU {
         this.__whichPage.set(newValue);
     }
     private widthPx: number;
+    private __isRotate: ObservedPropertySimplePU<boolean>;
+    get isRotate() {
+        return this.__isRotate.get();
+    }
+    set isRotate(newValue: boolean) {
+        this.__isRotate.set(newValue);
+    }
+    private time;
+    private __rotaAngle: ObservedPropertySimplePU<number>;
+    get rotaAngle() {
+        return this.__rotaAngle.get();
+    }
+    set rotaAngle(newValue: number) {
+        this.__rotaAngle.set(newValue);
+    }
+    private __offsetPos: ObservedPropertySimplePU<string>;
+    get offsetPos() {
+        return this.__offsetPos.get();
+    }
+    set offsetPos(newValue: string) {
+        this.__offsetPos.set(newValue);
+    }
+    private __textOpacity: ObservedPropertySimplePU<number>;
+    get textOpacity() {
+        return this.__textOpacity.get();
+    }
+    set textOpacity(newValue: number) {
+        this.__textOpacity.set(newValue);
+    }
+    private clockAnime() {
+        Context.animateTo({
+            duration: 600,
+            curve: Curve.FastOutSlowIn,
+            delay: 0,
+            iterations: 1,
+            onFinish: () => {
+            }
+        }, () => {
+            this.rotaAngle = this.isRotate ? 90 : 0;
+            this.textOpacity = this.isRotate ? 0 : 1;
+            this.offsetPos = this.isRotate ? `${px2vp(this.widthPx) * 0.085}vp` : '0';
+        });
+    }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
@@ -188,7 +264,7 @@ class EachContent extends ViewPU {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 72 });
+                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 92 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};
@@ -218,10 +294,43 @@ class EachContent extends ViewPU {
                             justifyContent: FlexAlign.Center,
                             alignItems: ItemAlign.Center
                         });
+                        Flex.offset({
+                            x: this.offsetPos,
+                            y: this.offsetPos
+                        });
                         Flex.width(Constants.PERCENT_MAX);
                         Flex.height(Constants.PERCENT_MAX);
-                        Flex.backgroundColor({ "id": 16777420, "type": 10001, params: [], "bundleName": "ohos.samples.etsclock", "moduleName": "entry" });
+                        Flex.backgroundColor({ "id": 16777420, "type": 10001, params: [], "bundleName": "com.blingcc.flipclock", "moduleName": "entry" });
                     }, Flex);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Row.create();
+                        Row.translate({ x: 0, y: `${px2vp(this.widthPx) * 0.1}vp` });
+                    }, Row);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Text.create(`${this.time.getFullYear().toString()} - ${this.time.getMonth() % 10 == this.time.getMonth() ? '0' :
+                            ''}${this.time.getMonth().toString()} - ${this.time.getDate() % 10 == this.time.getDate() ? '0' :
+                            ''}${this.time.getDate().toString()}`);
+                        Text.fontColor('#aaa');
+                        Text.fontSize('23vp');
+                        Text.opacity(this.textOpacity);
+                    }, Text);
+                    Text.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        Image.create({ "id": 16777544, "type": 20000, params: [], "bundleName": "com.blingcc.flipclock", "moduleName": "entry" });
+                        Image.fillColor('#aaa');
+                        Image.width('28vp');
+                        Image.height('27vp');
+                        Image.padding({ top: 4, left: 6 });
+                        Image.onClick(() => {
+                            this.isRotate = !this.isRotate;
+                            this.clockAnime();
+                        });
+                    }, Image);
+                    Row.pop();
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        __Common__.create();
+                        __Common__.rotate({ x: 0, y: 0, z: 1, centerX: '50%', centerY: '50%', angle: this.rotaAngle });
+                    }, __Common__);
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
@@ -230,7 +339,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.HOUR
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 80 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 120 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -252,9 +361,11 @@ class EachContent extends ViewPU {
                             }
                         }, { name: "PageTurningAnimation" });
                     }
+                    __Common__.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         __Common__.create();
                         __Common__.translate({ x: 0, y: `-${px2vp(this.widthPx) * 0.2}vp` });
+                        __Common__.rotate({ x: 0, y: 0, z: 1, angle: this.rotaAngle });
                     }, __Common__);
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -264,7 +375,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.MIN
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 86 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 127 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -290,6 +401,7 @@ class EachContent extends ViewPU {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         __Common__.create();
                         __Common__.translate({ x: 0, y: `-${px2vp(this.widthPx) * 0.4}vp` });
+                        __Common__.rotate({ x: 0, y: 0, z: 1, angle: this.rotaAngle });
                     }, __Common__);
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -299,7 +411,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.SEC
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 93 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 135 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -338,7 +450,7 @@ class EachContent extends ViewPU {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new FlipClock(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 106 });
+                                let componentCall = new FlipClock(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 153 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};
@@ -364,4 +476,4 @@ class EachContent extends ViewPU {
         this.updateDirtyElements();
     }
 }
-registerNamedRoute(() => new Index(undefined, {}), "", { bundleName: "ohos.samples.etsclock", moduleName: "entry", pagePath: "pages/Index", pageFullPath: "entry/src/main/ets/pages/Index", integratedHsp: "false" });
+registerNamedRoute(() => new Index(undefined, {}), "", { bundleName: "com.blingcc.flipclock", moduleName: "entry", pagePath: "pages/Index", pageFullPath: "entry/src/main/ets/pages/Index", integratedHsp: "false" });

@@ -1,7 +1,7 @@
 /**
  * Use these variables when you tailor your ArkTS code. They must be of the const type.
  */
-export const BUNDLE_NAME = 'ohos.samples.etsclock';
+export const BUNDLE_NAME = 'com.blingcc.flipclock';
 export const BUNDLE_TYPE = 'app';
 export const VERSION_CODE = 1000000;
 export const VERSION_NAME = '1.0.0';

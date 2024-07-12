@@ -296,6 +296,8 @@ media app_icon 0x01000000
 media bright 0x01000132
 media brightness_filled 0x01000128
 media cancel 0x01000143
+media change 0x01000146
+media changeBack 0x01000147
 media clock 0x01000133
 media clock_bg 0x01000137
 media clock_bg_out 0x01000130

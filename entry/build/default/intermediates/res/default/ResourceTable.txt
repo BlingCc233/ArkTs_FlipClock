@@ -296,6 +296,8 @@ media app_icon 0x01000001
 media bright 0x01000129
 media brightness_filled 0x0100012a
 media cancel 0x0100012b
+media change 0x01000146
+media changeBack 0x01000147
 media clock 0x0100012c
 media clock_bg 0x0100012d
 media clock_bg_out 0x0100012e
@@ -313,6 +315,7 @@ media ok 0x01000138
 media pause 0x01000139
 media reset 0x0100013a
 media resetccc 0x0100013b
+media rotate 0x01000148
 media seconds 0x0100013c
 media settings 0x0100013d
 media settings_blue 0x0100013e

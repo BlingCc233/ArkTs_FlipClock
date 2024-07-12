@@ -1303,5 +1303,17 @@
 			"type":	"media",
 			"name":	"worldclock_blue",
 			"id":	"0x01000145"
+		}, {
+			"type":	"media",
+			"name":	"change",
+			"id":	"0x01000146"
+		}, {
+			"type":	"media",
+			"name":	"changeBack",
+			"id":	"0x01000147"
+		}, {
+			"type":	"media",
+			"name":	"rotate",
+			"id":	"0x01000148"
 		}]
 }

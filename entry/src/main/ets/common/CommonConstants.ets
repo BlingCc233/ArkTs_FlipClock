@@ -88,7 +88,7 @@ export default class CommonConstants {
   /**
    * Animate duration.
    */
-  static readonly ANIMATE_DURATION: number = 600;
+  static readonly ANIMATE_DURATION: number = 200;
 
   /**
    * Rotate angle.
@@ -105,6 +105,13 @@ export default class CommonConstants {
   static readonly LIST_IMAGE_HEIGHT_WIDTH: number = 40;
   static readonly LIST_CARD_WIDTH: number = 272;
   static readonly LIST_CARD_HEIGHT: number = 344;
+  static readonly BORDER_RADIUS_DRAWER_CONTENT: number = 20;
+  static readonly FULL_HEIGHT: string = '100%';
+  static readonly LIST_CONTENT_HEIGHT: string = '110%';
+  static readonly MARGIN_SIXTEEN: number = 16;
+  static readonly MARGIN_BUTTON_TOP: number = 48;
+  static readonly SUB_LIST_WIDTH: string = '85%';
+  static readonly TRANSLATE_TOP: number = -40;
 
 
 }

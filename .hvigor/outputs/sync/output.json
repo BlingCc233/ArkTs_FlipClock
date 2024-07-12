@@ -70,7 +70,7 @@
   "ohos-project": {
     "SELECT_PRODUCT_NAME": "default",
     "MODULE_BUILD_DIR": "/Users/ccbling/DevecostudioProjects/arkts-clock/build",
-    "BUNDLE_NAME": "ohos.samples.etsclock",
+    "BUNDLE_NAME": "com.blingcc.flipclock",
     "BUILD_PATH": {
       "OUTPUT_PATH": "/Users/ccbling/DevecostudioProjects/arkts-clock/build/outputs/default"
     },

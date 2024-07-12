@@ -1,12 +1,12 @@
 {
   "modelVersion": "5.0.0",
-  "license": "",
+  "license": "GPL",
   "devDependencies": {
     "@ohos/hypium": "1.0.15"
   },
-  "author": "",
-  "name": "arktsclock",
-  "description": "Please describe the basic information.",
+  "author": "BlingCc",
+  "name": "FlipClock",
+  "description": "A Flip Clock with Pomodoro Function.",
   "main": "",
   "version": "1.0.0",
   "dependencies": {}
