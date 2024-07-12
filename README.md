@@ -14,6 +14,8 @@
 ## Still Working
 - [ ] 心情记录
 - [ ] 数据持久化
+- [ ] 114514生成器
+- [ ] 
 
 ## 示例图片
 <img src="./screenshot/sample1.gif" width="200px"/> 
