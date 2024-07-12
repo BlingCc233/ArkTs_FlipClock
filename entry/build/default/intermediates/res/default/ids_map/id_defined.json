@@ -25,32 +25,8 @@
 			"id":	"0x01000005"
 		}, {
 			"type":	"string",
-			"name":	"and",
-			"id":	"0x01000006"
-		}, {
-			"type":	"string",
 			"name":	"bottom_title_height",
 			"id":	"0x01000007"
-		}, {
-			"type":	"string",
-			"name":	"button_text_color",
-			"id":	"0x01000008"
-		}, {
-			"type":	"string",
-			"name":	"card_swiper_full_size",
-			"id":	"0x01000009"
-		}, {
-			"type":	"string",
-			"name":	"card_swiper_photo_preview_width",
-			"id":	"0x0100000A"
-		}, {
-			"type":	"string",
-			"name":	"card_swiper_tablet_preview_width",
-			"id":	"0x0100000B"
-		}, {
-			"type":	"string",
-			"name":	"click_to_listen",
-			"id":	"0x0100000C"
 		}, {
 			"type":	"string",
 			"name":	"common_bar_chart_height",
@@ -81,96 +57,12 @@
 			"id":	"0x01000013"
 		}, {
 			"type":	"string",
-			"name":	"delete_back",
-			"id":	"0x01000014"
-		}, {
-			"type":	"string",
-			"name":	"delete_ok",
-			"id":	"0x01000015"
-		}, {
-			"type":	"string",
-			"name":	"destination_data_1",
-			"id":	"0x01000016"
-		}, {
-			"type":	"string",
-			"name":	"destination_data_2",
-			"id":	"0x01000017"
-		}, {
-			"type":	"string",
-			"name":	"digital_scroll_animation_comma",
-			"id":	"0x01000018"
-		}, {
-			"type":	"string",
-			"name":	"digital_scroll_animation_get_ticket",
-			"id":	"0x01000019"
-		}, {
-			"type":	"string",
-			"name":	"digital_scroll_animation_ticket",
-			"id":	"0x0100001A"
-		}, {
-			"type":	"string",
-			"name":	"digital_scroll_animation_today",
-			"id":	"0x0100001B"
-		}, {
-			"type":	"string",
 			"name":	"divider_height",
 			"id":	"0x0100001C"
 		}, {
 			"type":	"string",
 			"name":	"entry_desc",
 			"id":	"0x0100001D"
-		}, {
-			"type":	"string",
-			"name":	"first_prompt",
-			"id":	"0x0100001E"
-		}, {
-			"type":	"string",
-			"name":	"five_fr",
-			"id":	"0x0100001F"
-		}, {
-			"type":	"string",
-			"name":	"friendMomentsPage_message",
-			"id":	"0x01000020"
-		}, {
-			"type":	"string",
-			"name":	"friendMomentsPage_share",
-			"id":	"0x01000021"
-		}, {
-			"type":	"string",
-			"name":	"friends_circle_likes",
-			"id":	"0x01000022"
-		}, {
-			"type":	"string",
-			"name":	"full_size",
-			"id":	"0x01000023"
-		}, {
-			"type":	"string",
-			"name":	"function_tool_bar",
-			"id":	"0x01000024"
-		}, {
-			"type":	"string",
-			"name":	"is_listening",
-			"id":	"0x01000025"
-		}, {
-			"type":	"string",
-			"name":	"jump_text_one",
-			"id":	"0x01000026"
-		}, {
-			"type":	"string",
-			"name":	"jump_to_history",
-			"id":	"0x01000027"
-		}, {
-			"type":	"string",
-			"name":	"jump_to_top",
-			"id":	"0x01000028"
-		}, {
-			"type":	"string",
-			"name":	"login_in",
-			"id":	"0x01000029"
-		}, {
-			"type":	"string",
-			"name":	"login_text",
-			"id":	"0x0100002A"
 		}, {
 			"type":	"string",
 			"name":	"main_page_padding",
@@ -193,56 +85,12 @@
 			"id":	"0x0100002F"
 		}, {
 			"type":	"string",
-			"name":	"main_page_top_borderRadius",
-			"id":	"0x01000030"
-		}, {
-			"type":	"string",
-			"name":	"marquee_content",
-			"id":	"0x01000031"
-		}, {
-			"type":	"string",
-			"name":	"marquee_title",
-			"id":	"0x01000032"
-		}, {
-			"type":	"string",
 			"name":	"max_size",
 			"id":	"0x01000033"
 		}, {
 			"type":	"string",
-			"name":	"memo_counts",
-			"id":	"0x01000034"
-		}, {
-			"type":	"string",
-			"name":	"memo_title",
-			"id":	"0x01000035"
-		}, {
-			"type":	"string",
 			"name":	"module_desc",
 			"id":	"0x01000036"
-		}, {
-			"type":	"string",
-			"name":	"my_trip",
-			"id":	"0x01000037"
-		}, {
-			"type":	"string",
-			"name":	"name_page_four",
-			"id":	"0x01000038"
-		}, {
-			"type":	"string",
-			"name":	"name_page_one",
-			"id":	"0x01000039"
-		}, {
-			"type":	"string",
-			"name":	"name_page_three",
-			"id":	"0x0100003A"
-		}, {
-			"type":	"string",
-			"name":	"name_page_two",
-			"id":	"0x0100003B"
-		}, {
-			"type":	"string",
-			"name":	"near_message",
-			"id":	"0x0100003C"
 		}, {
 			"type":	"string",
 			"name":	"ohos_id_card_margin_start",
@@ -297,132 +145,8 @@
 			"id":	"0x01000049"
 		}, {
 			"type":	"string",
-			"name":	"origin_data",
-			"id":	"0x0100004A"
-		}, {
-			"type":	"string",
-			"name":	"other_login_methods",
-			"id":	"0x0100004B"
-		}, {
-			"type":	"string",
-			"name":	"page_show",
-			"id":	"0x0100004C"
-		}, {
-			"type":	"string",
-			"name":	"phone_number",
-			"id":	"0x0100004D"
-		}, {
-			"type":	"string",
-			"name":	"plan_text",
-			"id":	"0x0100004E"
-		}, {
-			"type":	"string",
-			"name":	"privacy_policy",
-			"id":	"0x0100004F"
-		}, {
-			"type":	"string",
-			"name":	"prompt_text",
-			"id":	"0x01000050"
-		}, {
-			"type":	"string",
-			"name":	"read_and_agreed",
-			"id":	"0x01000051"
-		}, {
-			"type":	"string",
-			"name":	"read_and_check",
-			"id":	"0x01000052"
-		}, {
-			"type":	"string",
-			"name":	"reason",
-			"id":	"0x01000053"
-		}, {
-			"type":	"string",
 			"name":	"scroll_width",
 			"id":	"0x01000054"
-		}, {
-			"type":	"string",
-			"name":	"search_back_size_margin",
-			"id":	"0x01000055"
-		}, {
-			"type":	"string",
-			"name":	"search_background_color",
-			"id":	"0x01000056"
-		}, {
-			"type":	"string",
-			"name":	"search_delete_title",
-			"id":	"0x01000057"
-		}, {
-			"type":	"string",
-			"name":	"search_divider_height",
-			"id":	"0x01000058"
-		}, {
-			"type":	"string",
-			"name":	"search_height",
-			"id":	"0x01000059"
-		}, {
-			"type":	"string",
-			"name":	"search_history",
-			"id":	"0x0100005A"
-		}, {
-			"type":	"string",
-			"name":	"search_history_delete_size",
-			"id":	"0x0100005B"
-		}, {
-			"type":	"string",
-			"name":	"search_history_font_size2",
-			"id":	"0x0100005C"
-		}, {
-			"type":	"string",
-			"name":	"search_history_font_size3",
-			"id":	"0x0100005D"
-		}, {
-			"type":	"string",
-			"name":	"search_history_text_padding_margin1",
-			"id":	"0x0100005E"
-		}, {
-			"type":	"string",
-			"name":	"search_history_text_padding_margin2",
-			"id":	"0x0100005F"
-		}, {
-			"type":	"string",
-			"name":	"search_history_text_padding_margin3",
-			"id":	"0x01000060"
-		}, {
-			"type":	"string",
-			"name":	"search_history_text_padding_margin4",
-			"id":	"0x01000061"
-		}, {
-			"type":	"string",
-			"name":	"search_list_image_width",
-			"id":	"0x01000062"
-		}, {
-			"type":	"string",
-			"name":	"search_list_text_color",
-			"id":	"0x01000063"
-		}, {
-			"type":	"string",
-			"name":	"search_placeholder",
-			"id":	"0x01000064"
-		}, {
-			"type":	"string",
-			"name":	"sec_prompt",
-			"id":	"0x01000065"
-		}, {
-			"type":	"string",
-			"name":	"service_agreement",
-			"id":	"0x01000066"
-		}, {
-			"type":	"string",
-			"name":	"services_and_policies",
-			"id":	"0x01000067"
-		}, {
-			"type":	"string",
-			"name":	"shared_desc",
-			"id":	"0x01000068"
-		}, {
-			"type":	"string",
-			"name":	"sound_hound",
-			"id":	"0x01000069"
 		}, {
 			"type":	"string",
 			"name":	"swiper_stack_height1",
@@ -435,186 +159,6 @@
 			"type":	"string",
 			"name":	"swiper_stack_width",
 			"id":	"0x0100006C"
-		}, {
-			"type":	"string",
-			"name":	"text_happy",
-			"id":	"0x0100006D"
-		}, {
-			"type":	"string",
-			"name":	"text_load",
-			"id":	"0x0100006E"
-		}, {
-			"type":	"string",
-			"name":	"text_mine",
-			"id":	"0x0100006F"
-		}, {
-			"type":	"string",
-			"name":	"text_new_user_registration",
-			"id":	"0x01000070"
-		}, {
-			"type":	"string",
-			"name":	"text_relaxation",
-			"id":	"0x01000071"
-		}, {
-			"type":	"string",
-			"name":	"text_shopping",
-			"id":	"0x01000072"
-		}, {
-			"type":	"string",
-			"name":	"text_welcome",
-			"id":	"0x01000073"
-		}, {
-			"type":	"string",
-			"name":	"ticket_entrance",
-			"id":	"0x01000074"
-		}, {
-			"type":	"string",
-			"name":	"ticket_entrance_data_1",
-			"id":	"0x01000075"
-		}, {
-			"type":	"string",
-			"name":	"ticket_entrance_data_2",
-			"id":	"0x01000076"
-		}, {
-			"type":	"string",
-			"name":	"time_difference_data_1",
-			"id":	"0x01000077"
-		}, {
-			"type":	"string",
-			"name":	"time_difference_data_2",
-			"id":	"0x01000078"
-		}, {
-			"type":	"string",
-			"name":	"title_name",
-			"id":	"0x01000079"
-		}, {
-			"type":	"string",
-			"name":	"train_number_data_1",
-			"id":	"0x0100007A"
-		}, {
-			"type":	"string",
-			"name":	"two_fr",
-			"id":	"0x0100007B"
-		}, {
-			"type":	"string",
-			"name":	"vehicle_model",
-			"id":	"0x0100007C"
-		}, {
-			"type":	"string",
-			"name":	"vehicle_model_data_1",
-			"id":	"0x0100007D"
-		}, {
-			"type":	"string",
-			"name":	"vehicle_model_data_2",
-			"id":	"0x0100007E"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_app_name",
-			"id":	"0x0100007F"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_button",
-			"id":	"0x01000080"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_color_stack",
-			"id":	"0x01000081"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_friend",
-			"id":	"0x01000082"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_height_full",
-			"id":	"0x01000083"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_send_message",
-			"id":	"0x01000084"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_talk_info",
-			"id":	"0x01000085"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_talk_message",
-			"id":	"0x01000086"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_talk_message_four",
-			"id":	"0x01000087"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_talk_message_one",
-			"id":	"0x01000088"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_talk_message_thr",
-			"id":	"0x01000089"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_talk_message_two",
-			"id":	"0x0100008A"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_top_fig",
-			"id":	"0x0100008B"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_width_full",
-			"id":	"0x0100008C"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_width_half",
-			"id":	"0x0100008D"
-		}, {
-			"type":	"string",
-			"name":	"voice_record_dynamic_effect_width_nine",
-			"id":	"0x0100008E"
-		}, {
-			"type":	"string",
-			"name":	"voting_component_bottom_text_suffix",
-			"id":	"0x0100008F"
-		}, {
-			"type":	"string",
-			"name":	"voting_component_first_stack_width",
-			"id":	"0x01000090"
-		}, {
-			"type":	"string",
-			"name":	"voting_component_mid_gap_mark_anchor",
-			"id":	"0x01000091"
-		}, {
-			"type":	"string",
-			"name":	"voting_component_mid_text_left",
-			"id":	"0x01000092"
-		}, {
-			"type":	"string",
-			"name":	"voting_component_mid_text_right",
-			"id":	"0x01000093"
-		}, {
-			"type":	"string",
-			"name":	"voting_component_parent_column_height",
-			"id":	"0x01000094"
-		}, {
-			"type":	"string",
-			"name":	"voting_component_parent_column_width",
-			"id":	"0x01000095"
-		}, {
-			"type":	"string",
-			"name":	"voting_component_voting_theme_image_text",
-			"id":	"0x01000096"
-		}, {
-			"type":	"string",
-			"name":	"voting_notice",
-			"id":	"0x01000097"
-		}, {
-			"type":	"string",
-			"name":	"whole_course_data_1",
-			"id":	"0x01000098"
-		}, {
-			"type":	"string",
-			"name":	"whole_course_data_2",
-			"id":	"0x01000099"
 		}, {
 			"type":	"string",
 			"name":	"width_full",
@@ -1185,132 +729,12 @@
 			"id":	"0x01000127"
 		}, {
 			"type":	"media",
-			"name":	"add",
-			"id":	"0x01000128"
-		}, {
-			"type":	"media",
-			"name":	"bright",
-			"id":	"0x01000129"
-		}, {
-			"type":	"media",
-			"name":	"brightness_filled",
-			"id":	"0x0100012A"
-		}, {
-			"type":	"media",
-			"name":	"cancel",
-			"id":	"0x0100012B"
-		}, {
-			"type":	"media",
-			"name":	"clock",
-			"id":	"0x0100012C"
-		}, {
-			"type":	"media",
-			"name":	"clock_bg",
-			"id":	"0x0100012D"
-		}, {
-			"type":	"media",
-			"name":	"clock_bg_out",
-			"id":	"0x0100012E"
-		}, {
-			"type":	"media",
-			"name":	"clock_blue",
-			"id":	"0x0100012F"
-		}, {
-			"type":	"media",
 			"name":	"dot",
 			"id":	"0x01000130"
 		}, {
 			"type":	"media",
-			"name":	"enlarge",
-			"id":	"0x01000131"
-		}, {
-			"type":	"media",
-			"name":	"hours",
-			"id":	"0x01000132"
-		}, {
-			"type":	"media",
-			"name":	"ic_public_back",
-			"id":	"0x01000133"
-		}, {
-			"type":	"media",
-			"name":	"ic_public_delete_filled",
-			"id":	"0x01000134"
-		}, {
-			"type":	"media",
-			"name":	"ic_public_deselect_all",
-			"id":	"0x01000135"
-		}, {
-			"type":	"media",
 			"name":	"list",
 			"id":	"0x01000136"
-		}, {
-			"type":	"media",
-			"name":	"minutes",
-			"id":	"0x01000137"
-		}, {
-			"type":	"media",
-			"name":	"ok",
-			"id":	"0x01000138"
-		}, {
-			"type":	"media",
-			"name":	"pause",
-			"id":	"0x01000139"
-		}, {
-			"type":	"media",
-			"name":	"reset",
-			"id":	"0x0100013A"
-		}, {
-			"type":	"media",
-			"name":	"resetccc",
-			"id":	"0x0100013B"
-		}, {
-			"type":	"media",
-			"name":	"seconds",
-			"id":	"0x0100013C"
-		}, {
-			"type":	"media",
-			"name":	"settings",
-			"id":	"0x0100013D"
-		}, {
-			"type":	"media",
-			"name":	"settings_blue",
-			"id":	"0x0100013E"
-		}, {
-			"type":	"media",
-			"name":	"start",
-			"id":	"0x0100013F"
-		}, {
-			"type":	"media",
-			"name":	"sunny",
-			"id":	"0x01000140"
-		}, {
-			"type":	"media",
-			"name":	"test",
-			"id":	"0x01000141"
-		}, {
-			"type":	"media",
-			"name":	"timer",
-			"id":	"0x01000142"
-		}, {
-			"type":	"media",
-			"name":	"timer_blue",
-			"id":	"0x01000143"
-		}, {
-			"type":	"media",
-			"name":	"worldclock",
-			"id":	"0x01000144"
-		}, {
-			"type":	"media",
-			"name":	"worldclock_blue",
-			"id":	"0x01000145"
-		}, {
-			"type":	"media",
-			"name":	"change",
-			"id":	"0x01000146"
-		}, {
-			"type":	"media",
-			"name":	"changeBack",
-			"id":	"0x01000147"
 		}, {
 			"type":	"media",
 			"name":	"rotate",

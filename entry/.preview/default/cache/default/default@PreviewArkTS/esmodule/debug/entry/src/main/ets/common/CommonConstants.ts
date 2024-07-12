@@ -81,7 +81,7 @@ export default class CommonConstants {
     /**
      * Animate duration.
      */
-    static readonly ANIMATE_DURATION: number = 600;
+    static readonly ANIMATE_DURATION: number = 200;
     /**
      * Rotate angle.
      */

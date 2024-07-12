@@ -1,5 +1,6 @@
 import { display, RectShape } from '@kit.ArkUI';
 import Constants from '../common/CommonConstants';
+import {Homo} from './Homo'
 
 export enum enumT {
   HOUR,

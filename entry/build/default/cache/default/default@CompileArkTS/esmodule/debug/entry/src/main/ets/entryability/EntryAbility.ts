@@ -4,6 +4,8 @@ import type Want from "@ohos:app.ability.Want";
 import hilog from "@ohos:hilog";
 import type window from "@ohos:window";
 import type { BusinessError } from "@ohos:base";
+import preferences from "@ohos:data.preferences";
+let dataPreferences: preferences.Preferences | null = null;
 export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
@@ -12,6 +14,14 @@ export default class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
     }
     onWindowStageCreate(windowStage: window.WindowStage): void {
+        preferences.getPreferences(this.context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
+            if (err) {
+                console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+                return;
+            }
+            dataPreferences = val;
+            console.info("Succeeded in getting preferences.");
+        });
         console.info('onWindowStageCreate');
         let windowClass: window.Window | undefined = undefined;
         windowStage.getMainWindow((err: BusinessError, data) => {

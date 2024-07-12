@@ -7,7 +7,9 @@ import { initTabData } from '../viewmodel/TabViewModel';
 import { TabItem } from '../viewmodel/TabItem';
 import {Pomodoro} from './Pomodoro';
 import {PageTurningAnimation, enumT} from './PageTurningAnimation';
-import {Cofeeling} from './Cofeeling'
+import {Cofeeling} from './Cofeeling';
+import {Homo} from './Homo'
+
 
 
 
@@ -149,7 +151,7 @@ struct EachContent {
         .backgroundColor($r('app.color.stack_background_color'))
       }
       if (this.whichPage == 2) {
-        FlipClock();
+        Homo()
       }
     }
 

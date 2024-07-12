@@ -13,14 +13,6 @@
     "Image",
     "If"
   ],
-  "entry/src/main/ets/pages/FlipClock.ets": [
-    "Column",
-    "Divider",
-    "Text",
-    "Row",
-    "Image",
-    "If"
-  ],
   "entry/src/main/ets/pages/Pomodoro.ets": [
     "Image",
     "Stack",
@@ -46,6 +38,14 @@
     "Text",
     "Stack",
     "Rect",
+    "If"
+  ],
+  "entry/src/main/ets/pages/Homo.ets": [
+    "Row",
+    "Text",
+    "Column",
+    "Flex",
+    "TextInput",
     "If"
   ]
 }

@@ -1,7 +1,7 @@
 {
 	"app": {
-		"bundleName": "ohos.samples.etsclock",
-		"vendor": "samples",
+		"bundleName": "com.blingcc.flipclock",
+		"vendor": "publish",
 		"versionCode": 1000000,
 		"versionName": "1.0.0",
 		"icon": "$media:app_icon",

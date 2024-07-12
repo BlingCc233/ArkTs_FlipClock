@@ -1,11 +1,10 @@
 import { display, RectShape } from '@kit.ArkUI';
 import { curves } from '@kit.ArkUI';
-import measure from '@ohos.measure'
-import Constants from '../common/CommonConstants';
-import font from '@ohos.font'
+import Prompt from '@system.prompt'
+import { Homo } from './Homo';
 import setting from './setting.json'
 
-export enum Stage{
+export enum Stage {
   FOCUS,
   BREAK,
   LONGBREAK
@@ -38,12 +37,11 @@ export struct Pomodoro {
   @State visible: Visibility = Visibility.Visible;
   private curStage: Stage = Stage.FOCUS;
   private timer: number = 0;
-  @State remainSec : number = this.remainTime*60;
-  @State clockOff:number = 0;
-  @State clockColor:string = '#fff';
-
-
-
+  @State remainSec: number = this.remainTime * 60;
+  @State clockOff: number = 0;
+  @State clockColor: string = '#fff';
+  @State btnAngle: number = 0;
+  @State homoZindex: number = -1;
 
   private buttonAnime() {
     animateTo({
@@ -74,7 +72,7 @@ export struct Pomodoro {
     })
   }
 
-  private countDownAnime(){
+  private countDownAnime() {
     animateTo({
       duration: 200,
       curve: Curve.FastOutSlowIn,
@@ -90,56 +88,63 @@ export struct Pomodoro {
 
   private countDown() {
     let lastStage = this.curStage;
-    let totalSec = (this.curStage == Stage.FOCUS ? this.focusTime * 60 : (this.curStage == Stage.BREAK ? this.breakTime * 60 : this.longBreak * 60));
-    this.defaultTime = (totalSec/60);
+    let totalSec = (this.curStage == Stage.FOCUS ? this.focusTime * 60 :
+      (this.curStage == Stage.BREAK ? this.breakTime * 60 : this.longBreak * 60));
+    this.defaultTime = (totalSec / 60);
     this.progress = this.defaultTime;
     this.timer = setInterval(() => {
       this.countDownAnime()
-      if(this.remainSec>0) {
+      if (this.remainSec > 0) {
         this.remainSec--;
-        this.remainTime = Math.floor(this.remainSec/60)+1;
+        this.remainTime = Math.floor(this.remainSec / 60) + 1;
       }
-      if(this.remainSec == 0){
-        if(lastStage == Stage.FOCUS && this.breakInterval > 0){
+      if (this.remainSec == 0) {
+        if (lastStage == Stage.FOCUS && this.breakInterval > 0) {
           this.curStage = Stage.BREAK;
-          this.breakInterval --;
-          totalSec = this.breakTime*60;
+          this.breakInterval--;
+          totalSec = this.breakTime * 60;
         }
-        if(lastStage == Stage.FOCUS && this.breakInterval == 0){
+        if (lastStage == Stage.FOCUS && this.breakInterval == 0) {
           this.curStage = Stage.LONGBREAK;
           this.breakInterval = 4;
-          totalSec = this.longBreak*60;
+          totalSec = this.longBreak * 60;
         }
-        if(lastStage == Stage.BREAK || lastStage == Stage.LONGBREAK){
+        if (lastStage == Stage.BREAK || lastStage == Stage.LONGBREAK) {
           this.curStage = Stage.FOCUS;
-          totalSec = this.focusTime*60;
+          totalSec = this.focusTime * 60;
         }
         lastStage = this.curStage;
-        this.defaultTime = Math.floor(totalSec/60);
+        this.defaultTime = Math.floor(totalSec / 60);
         this.remainSec = totalSec;
         this.progress = this.defaultTime;
       }
     }, 1000)
   }
 
-
-
   @Builder
   descriptionBuilderImage() {
     Image($r('sys.media.ohos_ic_public_clock'))
-      .width(40).height(44)
-      .padding({bottom:4})
-      .translate({ x: 0, y: 40+this.clockOff })
+      .width(40)
+      .height(44)
+      .padding({ bottom: 4 })
+      .translate({ x: 0, y: 40 + this.clockOff })
       .fillColor(Color.White)
   }
 
   build() {
     Stack() {
+      Homo()
+        .zIndex(this.homoZindex)
+      Column()
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#232323')
       Column() {
-        Gauge({ value: !this.isPause ? this.remainSec : this.progress*60, min: 0, max: this.defaultTime*60 }) {
+        Gauge({ value: !this.isPause ? this.remainSec : this.progress * 60, min: 0, max: this.defaultTime * 60 }) {
           Column() {
-            Text(Math.floor((!this.isPause ? this.remainTime : this.progress) >= 0 ? Math.floor(!this.isPause ? this.remainTime : this.progress) : 0).toString())
-            // Text(this.remainSec.toString())
+            Text(Math.floor((!this.isPause ? this.remainTime : this.progress) >= 0 ?
+            Math.floor(!this.isPause ? this.remainTime : this.progress) : 0)
+              .toString())// Text(this.remainSec.toString())
               .fontWeight(FontWeight.Bolder)
               .width('75%')
               .fontColor(this.clockColor)
@@ -182,10 +187,9 @@ export struct Pomodoro {
             .onClick(() => {
               this.isPause = !this.isPause;
               this.buttonAnime();
-              if(!this.isPause){
+              if (!this.isPause) {
                 this.countDown();
-              }
-              else {
+              } else {
                 clearInterval(this.timer);
               }
 
@@ -212,7 +216,14 @@ export struct Pomodoro {
                         title: `Ciallo～(∠・ω< )⌒★`,
                         backgroundColor: '#aaa',
                         backgroundBlurStyle: BlurStyle.BACKGROUND_ULTRA_THICK,
-                        message: '\t\t\t番茄钟结束啦！',
+                        message: `
+                          <p align="center">
+                          <a href="https://github.com/BlingCc233/go-cqhttp-ccbot/releases">
+                            <img src="https://img.shields.io/github/v/release/BlingCc233/go-cqhttp-ccbot?color=blueviolet&include_prereleases&style=for-the-badge" alt="release">
+                          </a>
+                        </p>
+                        <h1>番茄钟结束啦！</h1>
+                        `,
                         alignment: DialogAlignment.Center,
                         autoCancel: true,
                         height: '40%',
@@ -248,6 +259,12 @@ export struct Pomodoro {
               angle: this.btnGrad,
               colors: [[this.buttonColor1, 0.0], [this.buttonColor2, 0.5], [this.buttonColor3, 1.0]]
             })
+            .rotate({
+              x: 0,
+              y: 0,
+              z: 1,
+              angle: this.btnAngle
+            })
             .borderRadius('30vp')
             .id('text_pickerButton')
             .visibility(this.visible)
@@ -261,10 +278,45 @@ export struct Pomodoro {
               });
 
             })
+            .gesture(
+              LongPressGesture({ repeat: true, duration: 200 })
+                .onAction((event: GestureEvent | undefined) => {
+                  if (event) {
+                    if (event.repeat) {
+                      animateTo({
+                        duration: 100,
+                        curve: Curve.Friction,
+                        delay: 0,
+                        iterations: 1,
+                        onFinish: () => {
+                          animateTo({
+                            duration: 100,
+                            curve: Curve.Friction,
+                            delay: 0,
+                            iterations: 1,
+                            onFinish: () => {
+                              this.btnAngle = 0;
+                            }
+                          }, () => {
+                            this.btnAngle = -7;
+                          })
+                        }
+                      }, () => {
+                        this.btnAngle = 7;
+                      })
+                    }
+                  }
+                })
+                .onActionEnd(() => {
+                  this.btnAngle = 0;
+                  this.homoZindex = 99;
+                })
+            )
         }
         .width('70%')
       }
-      .margin({ top: '-30%' })
+      .backgroundColor('#232323')
+      .margin({top:'-30%'})
 
 
       RelativeContainer() {
@@ -283,20 +335,6 @@ export struct Pomodoro {
         .onClick(() => {
           this.closeSelf();
         })
-
-        // Image($r('sys.media.ohos_ic_public_arrow_down'))
-        //   .fillColor('#ededed')
-        //   .width('40vp')
-        //   .height('50vp')
-        //   .alignRules({
-        //     top: { anchor: "__container__", align: VerticalAlign.Top },
-        //     left: { anchor: '__container__', align: HorizontalAlign.Start }
-        //   })
-        //   .margin({
-        //     top: '10vp',
-        //     left: '20vp'
-        //   })
-        //   .id('button')
 
 
         Column() {
@@ -405,11 +443,11 @@ export struct Pomodoro {
                   // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
                   console.log(String(value.index));
                   this.focusTime = parseInt(String(value.value));
-                  if(this.curStage == Stage.FOCUS){
+                  if (this.curStage == Stage.FOCUS) {
                     this.defaultTime = this.focusTime;
                     this.progress = this.defaultTime;
                     this.remainTime = this.defaultTime;
-                    this.remainSec = this.defaultTime*60;
+                    this.remainSec = this.defaultTime * 60;
                   }
 
                 },
@@ -467,11 +505,11 @@ export struct Pomodoro {
                   console.log(String(value.index));
                   this.breakTime = parseInt(String(value.value));
 
-                  if(this.curStage == Stage.BREAK){
+                  if (this.curStage == Stage.BREAK) {
                     this.defaultTime = this.breakTime;
                     this.progress = this.defaultTime;
                     this.remainTime = this.defaultTime;
-                    this.remainSec = this.defaultTime*60;
+                    this.remainSec = this.defaultTime * 60;
                   }
 
                 },
@@ -530,11 +568,11 @@ export struct Pomodoro {
                   this.longBreak = parseInt(String(value.value));
                   setting.longBreak = this.longBreak;
 
-                  if(this.curStage == Stage.LONGBREAK){
+                  if (this.curStage == Stage.LONGBREAK) {
                     this.defaultTime = this.longBreak;
                     this.progress = this.defaultTime;
                     this.remainTime = this.defaultTime;
-                    this.remainSec = this.defaultTime*60;
+                    this.remainSec = this.defaultTime * 60;
 
                   }
                 },
@@ -650,3 +688,5 @@ export struct Pomodoro {
     return result;
   }
 }
+
+

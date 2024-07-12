@@ -1,6 +1,6 @@
 {
-  "entry/src/main/ets/pages/Pomodoro.ets": [
+  "entry/src/main/ets/pages/Index.ets": [
     "ohos.display",
-    "ohos.curves"
+    "ohos.hilog"
   ]
 }

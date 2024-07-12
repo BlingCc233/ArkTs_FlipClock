@@ -14,7 +14,6 @@ interface Index_Params {
     tabArray?: Array<TabItem>;
     currentIndex?: number;
 }
-import { FlipClock } from "@bundle:com.blingcc.flipclock/entry/ets/pages/FlipClock";
 import Constants from "@bundle:com.blingcc.flipclock/entry/ets/common/CommonConstants";
 import display from "@ohos:display";
 import hilog from "@ohos:hilog";
@@ -22,6 +21,7 @@ import { initTabData } from "@bundle:com.blingcc.flipclock/entry/ets/viewmodel/T
 import type { TabItem } from '../viewmodel/TabItem';
 import { Pomodoro } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Pomodoro";
 import { PageTurningAnimation, enumT } from "@bundle:com.blingcc.flipclock/entry/ets/pages/PageTurningAnimation";
+import { Homo } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Homo";
 class Index extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -112,7 +112,7 @@ class Index extends ViewPU {
                                 if (isInitialRender) {
                                     let componentCall = new EachContent(this, {
                                         whichPage: item.id
-                                    }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 40 });
+                                    }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 41 });
                                     ViewPU.create(componentCall);
                                     let paramsLambda = () => {
                                         return {
@@ -264,7 +264,7 @@ class EachContent extends ViewPU {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 92 });
+                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 93 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};
@@ -339,7 +339,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.HOUR
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 120 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 121 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -375,7 +375,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.MIN
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 127 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 128 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -411,7 +411,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.SEC
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 135 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 136 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -450,7 +450,7 @@ class EachContent extends ViewPU {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new FlipClock(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 153 });
+                                let componentCall = new Homo(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 154 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};
@@ -460,7 +460,7 @@ class EachContent extends ViewPU {
                             else {
                                 this.updateStateVarsOfChildByElmtId(elmtId, {});
                             }
-                        }, { name: "FlipClock" });
+                        }, { name: "Homo" });
                     }
                 });
             }

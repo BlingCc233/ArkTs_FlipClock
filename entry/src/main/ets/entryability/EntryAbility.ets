@@ -16,6 +16,9 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { preferences } from '@kit.ArkData';
+
+let dataPreferences: preferences.Preferences | null = null;
 
 
 export default class EntryAbility extends UIAbility {
@@ -29,6 +32,15 @@ export default class EntryAbility extends UIAbility {
 
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
+
+    preferences.getPreferences(this.context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
+      if (err) {
+        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      dataPreferences = val;
+      console.info("Succeeded in getting preferences.");
+    })
     console.info('onWindowStageCreate');
     let windowClass: window.Window | undefined = undefined;
     windowStage.getMainWindow((err: BusinessError, data) => {
