@@ -4,4 +4,5 @@
 /oh_modules/
 /screenshots/
 /.idea/
-/.hvigor/
+/.hvigor/*
+/.idea/*
