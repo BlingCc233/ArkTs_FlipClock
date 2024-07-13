@@ -1,4 +1,5 @@
 import homer from './homo.json'
+import { curves, router } from '@kit.ArkUI';
 
 @Component
 export default struct TextGradientView {
@@ -19,75 +20,98 @@ export default struct TextGradientView {
   }
 }
 
+@Entry
+
 @Preview
 @Component
 export struct Homo {
   @State resNum: string = '';
   @State inpNum: string = '';
+  @State Golden :string = '#ff544203';
 
   build() {
-    Column() {
-      Flex({
-        direction: FlexDirection.Column,
-        justifyContent: FlexAlign.SpaceAround,
-        alignItems: ItemAlign.Center
-      }) {
-        TextGradientView({message: '哼！啊～啊啊'})
-          .rotate({
-            x: 0,
-            y: 0,
-            z: 1,
-            angle: 15
-          })
-          .opacity(0.6)
-          .translate({ x: 20, y: -10 })
+    Stack() {
+      Column().width('100%').height('100%').backgroundColor('#232323')
+      Column() {
+        Flex({
+          direction: FlexDirection.Column,
+          justifyContent: FlexAlign.SpaceAround,
+          alignItems: ItemAlign.Center
+        }) {
+          TextGradientView({ message: '哼！啊～啊啊' })
+            .rotate({
+              x: 0,
+              y: 0,
+              z: 1,
+              angle: 15
+            })
+            .opacity(0.6)
+            .translate({ x: 20, y: -10 })
 
-        Column(){
-          Text(`${this.resNum == '' ? '快点' :
-            this.inpNum + ' = '}`)
-            .fontColor('#DC9B00')
+          Column() {
+            Text(`${this.resNum == '' ? '快点' :
+              this.inpNum + ' = '}`)
+              .fontColor('#DC9B00')
+              .fontSize(20)
+              .fontWeight(FontWeight.Normal)
+              .width("80%")
+
+
+            Text(`${this.resNum == '' ? '端上来罢' : this.resNum}`)
+              .fontColor('#DC9B00')
+              .fontSize(30)
+              .fontWeight(FontWeight.Normal)
+              .width("80%")
+
+          }
+
+
+          TextInput({ placeholder: "输入你要论证的数字" })
+            .textAlign(TextAlign.Center)
+            .width('80%')
             .fontSize(20)
-            .fontWeight(FontWeight.Normal)
-            .width("80%")
+            .inputFilter(`[-.0-9]`)
+            .placeholderColor('#77412300')
+            .height(50)
+            .maxLength(10)
+            .linearGradient({
+              angle: 23,
+              colors: [[this.Golden, 0.0], ['#DC9B00', 0.5], [this.Golden, 1.0]]
+            })
+            .onChange((value: string) => {
+              this.inpNum = value;
+              this.resNum = homoFunction(parseFloat(value))
+              if (value == '114514' || value == '1919810') {
+                animateTo({
+                  duration: 200,
+                  curve: Curve.EaseInOut,
+                }, () => {
+                  this.Golden = '#ffffd25d';
+                });
+              } else {
+                animateTo({
+                  duration: 200,
+                  curve: Curve.EaseInOut,
+                }, () => {
+                  this.Golden = '#ff544203';
+                });
+              }
+            })
 
+          TextGradientView({ message: '恶臭论证器' })
 
-          Text(`${this.resNum == '' ? '端上来罢' : this.resNum}`)
-            .fontColor('#DC9B00')
-            .fontSize(30)
-            .fontWeight(FontWeight.Normal)
-            .width("80%")
 
         }
-
-
-        TextInput({ placeholder: "输入你要论证的数字" })
-          .textAlign(TextAlign.Center)
-          .width('80%')
-          .fontSize(20)
-          .inputFilter(`[-.0-9]`)
-          .placeholderColor('#77412300')
-          .height(50)
-          .maxLength(10)
-          .linearGradient({
-            angle: 23,
-            colors: [['#ff544203', 0.0], ['#DC9B00', 0.5], ['#ffffd25d', 1.0]]
-          })
-          .onChange((value: string) => {
-            this.inpNum = value;
-            this.resNum = homoFunction(parseFloat(value))
-          })
-
-        TextGradientView({ message: '恶臭论证器' })
-
+        .height('80%')
 
       }
-      .height('80%')
-
+      .height('100%')
+      .width('100%')
+      .backgroundColor('#232323')
     }
-    .height('100%')
-    .width('100%')
-    .backgroundColor('#232323')
   }
+
+
 }
 
 

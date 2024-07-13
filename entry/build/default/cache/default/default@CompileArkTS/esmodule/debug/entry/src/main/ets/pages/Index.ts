@@ -21,7 +21,7 @@ import { initTabData } from "@bundle:com.blingcc.flipclock/entry/ets/viewmodel/T
 import type { TabItem } from '../viewmodel/TabItem';
 import { Pomodoro } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Pomodoro";
 import { PageTurningAnimation, enumT } from "@bundle:com.blingcc.flipclock/entry/ets/pages/PageTurningAnimation";
-import { Homo } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Homo";
+import { Cofeeling } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Cofeeling";
 class Index extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -76,6 +76,7 @@ class Index extends ViewPU {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create(name);
             Text.fontColor(Color.White);
+            Text.opacity(this.currentIndex === index ? 1 : 0.7);
             Text.fontSize(this.currentIndex === index ? '18fp' : '14fp');
             Text.fontWeight(this.currentIndex === index ? Constants.FONT_WEIGHT_TAB * 2 : Constants.FONT_WEIGHT_TAB);
             Text.lineHeight('22vp');
@@ -112,7 +113,7 @@ class Index extends ViewPU {
                                 if (isInitialRender) {
                                     let componentCall = new EachContent(this, {
                                         whichPage: item.id
-                                    }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 41 });
+                                    }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 42 });
                                     ViewPU.create(componentCall);
                                     let paramsLambda = () => {
                                         return {
@@ -264,7 +265,7 @@ class EachContent extends ViewPU {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 93 });
+                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 94 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};
@@ -307,8 +308,8 @@ class EachContent extends ViewPU {
                         Row.translate({ x: 0, y: `${px2vp(this.widthPx) * 0.1}vp` });
                     }, Row);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create(`${this.time.getFullYear().toString()} - ${this.time.getMonth() % 10 == this.time.getMonth() ? '0' :
-                            ''}${this.time.getMonth().toString()} - ${this.time.getDate() % 10 == this.time.getDate() ? '0' :
+                        Text.create(`${this.time.getFullYear().toString()} - ${this.time.getMonth() % 9 == this.time.getMonth() ? '0' :
+                            ''}${(this.time.getMonth() + 1).toString()} - ${this.time.getDate() % 10 == this.time.getDate() ? '0' :
                             ''}${this.time.getDate().toString()}`);
                         Text.fontColor('#aaa');
                         Text.fontSize('23vp');
@@ -339,7 +340,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.HOUR
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 121 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 122 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -375,7 +376,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.MIN
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 128 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 129 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -411,7 +412,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.SEC
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 136 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 137 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -450,7 +451,7 @@ class EachContent extends ViewPU {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new Homo(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 154 });
+                                let componentCall = new Cofeeling(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 155 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};
@@ -460,7 +461,7 @@ class EachContent extends ViewPU {
                             else {
                                 this.updateStateVarsOfChildByElmtId(elmtId, {});
                             }
-                        }, { name: "Homo" });
+                        }, { name: "Cofeeling" });
                     }
                 });
             }

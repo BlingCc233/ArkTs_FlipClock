@@ -23,7 +23,6 @@
     "Row",
     "Button",
     "LongPressGesture",
-    "AlertDialog",
     "RelativeContainer",
     "List",
     "ListItem",
@@ -31,6 +30,16 @@
     "Toggle",
     "TextPickerDialog",
     "PanGesture",
+    "CustomDialogController",
+    "If"
+  ],
+  "entry/src/main/ets/pages/Homo.ets": [
+    "Row",
+    "Text",
+    "Stack",
+    "Column",
+    "Flex",
+    "TextInput",
     "If"
   ],
   "entry/src/main/ets/pages/PageTurningAnimation.ets": [
@@ -40,12 +49,9 @@
     "Rect",
     "If"
   ],
-  "entry/src/main/ets/pages/Homo.ets": [
+  "entry/src/main/ets/pages/Cofeeling.ets": [
     "Row",
-    "Text",
     "Column",
-    "Flex",
-    "TextInput",
-    "If"
+    "Text"
   ]
 }

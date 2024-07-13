@@ -2,6 +2,7 @@ import { display, RectShape } from '@kit.ArkUI';
 import { curves } from '@kit.ArkUI';
 import Prompt from '@system.prompt'
 import { Homo } from './Homo';
+import router from '@ohos.router'
 import setting from './setting.json'
 
 export enum Stage {
@@ -9,18 +10,25 @@ export enum Stage {
   BREAK,
   LONGBREAK
 }
+PersistentStorage.persistProp('focusTime', 25);
+PersistentStorage.persistProp('breakTime', 5);
+PersistentStorage.persistProp('longBreak', 10);
+PersistentStorage.persistProp('isRemind', true);
+PersistentStorage.persistProp('isVibration', true);
+
 
 @Preview
 @Component
 export struct Pomodoro {
   private widthPx: number = display.getDefaultDisplaySync().width;
   private timeData = new Date();
-  @State focusTime: number = setting.defaultTime;
+  @StorageLink('focusTime') focusTime: number = 25;
+  @StorageLink('breakTime') breakTime: number = 5;
+  @StorageLink('longBreak') longBreak: number = 10;
+  @StorageLink('isRemind') isRemind: boolean = true;
+  @StorageLink('isVibration') isVibration: boolean = true;
+
   @State defaultTime: number = this.focusTime;
-  @State breakTime: number = setting.breakTime;
-  @State longBreak: number = setting.longBreak;
-  @State isRemind: boolean = setting.isRemind;
-  @State isVibration: boolean = setting.isVibration;
   private breakInterval: number = 4;
   @State remainTime: number = this.defaultTime;
   @State select: number = 2;
@@ -41,7 +49,6 @@ export struct Pomodoro {
   @State clockOff: number = 0;
   @State clockColor: string = '#fff';
   @State btnAngle: number = 0;
-  @State homoZindex: number = -1;
 
   private buttonAnime() {
     animateTo({
@@ -133,8 +140,6 @@ export struct Pomodoro {
 
   build() {
     Stack() {
-      Homo()
-        .zIndex(this.homoZindex)
       Column()
         .width('100%')
         .height('100%')
@@ -178,7 +183,7 @@ export struct Pomodoro {
             .height(`${px2vp(this.widthPx) * 0.15}vp`)
             .fontColor('#e1e2e5')
             .translate({ x: `${this.buttonPos}%` })
-            .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.5 })
+            .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.8 })
             .linearGradient({
               angle: this.btnGrad,
               colors: [[this.buttonColor1, 0.0], [this.buttonColor2, 0.5], [this.buttonColor3, 1.0]]
@@ -211,39 +216,42 @@ export struct Pomodoro {
                     //长按结束番茄钟
                   }
                   if (this.progress <= 0) {
-                    AlertDialog.show(
-                      {
-                        title: `Ciallo～(∠・ω< )⌒★`,
-                        backgroundColor: '#aaa',
-                        backgroundBlurStyle: BlurStyle.BACKGROUND_ULTRA_THICK,
-                        message: `
-                          <p align="center">
-                          <a href="https://github.com/BlingCc233/go-cqhttp-ccbot/releases">
-                            <img src="https://img.shields.io/github/v/release/BlingCc233/go-cqhttp-ccbot?color=blueviolet&include_prereleases&style=for-the-badge" alt="release">
-                          </a>
-                        </p>
-                        <h1>番茄钟结束啦！</h1>
-                        `,
-                        alignment: DialogAlignment.Center,
-                        autoCancel: true,
-                        height: '40%',
-                        confirm: {
-                          value: 'Reset',
-                          backgroundColor: '#4e4e4e',
-                          fontColor: '#eaeaea',
-                          action: () => {
-                            this.defaultTime = this.focusTime;
-                            this.progress = this.focusTime;
-                            this.curStage = Stage.FOCUS;
-                          }
-                        },
-                        cancel: () => {
-                          this.defaultTime = this.focusTime;
-                          this.progress = this.focusTime;
-                          this.curStage = Stage.FOCUS;
-                        }
-                      }
-                    )
+                    if (this.dialogController != null) {
+                      this.dialogController.open()
+                    }
+                    // AlertDialog.show(
+                    //   {
+                    //     title: `Ciallo～(∠・ω< )⌒★`,
+                    //     backgroundColor: '#aaa',
+                    //     backgroundBlurStyle: BlurStyle.BACKGROUND_ULTRA_THICK,
+                    //     message: `
+                    //       <p align="center">
+                    //       <a href="https://github.com/BlingCc233/go-cqhttp-ccbot/releases">
+                    //         <img src="https://img.shields.io/github/v/release/BlingCc233/go-cqhttp-ccbot?color=blueviolet&include_prereleases&style=for-the-badge" alt="release">
+                    //       </a>
+                    //     </p>
+                    //     <h1>番茄钟结束啦！</h1>
+                    //     `,
+                    //     alignment: DialogAlignment.Center,
+                    //     autoCancel: true,
+                    //     height: '40%',
+                    //     confirm: {
+                    //       value: 'Reset',
+                    //       backgroundColor: '#4e4e4e',
+                    //       fontColor: '#eaeaea',
+                    //       action: () => {
+                    //         this.defaultTime = this.focusTime;
+                    //         this.progress = this.focusTime;
+                    //         this.curStage = Stage.FOCUS;
+                    //       }
+                    //     },
+                    //     cancel: () => {
+                    //       this.defaultTime = this.focusTime;
+                    //       this.progress = this.focusTime;
+                    //       this.curStage = Stage.FOCUS;
+                    //     }
+                    //   }
+                    // )
                   }
                 })
             )
@@ -254,7 +262,7 @@ export struct Pomodoro {
             .width(`${px2vp(this.widthPx) * 0.3}vp`)
             .height(`${px2vp(this.widthPx) * 0.15}vp`)
             .fontColor('#e1e2e5')
-            .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.5 })
+            .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.8 })
             .linearGradient({
               angle: this.btnGrad,
               colors: [[this.buttonColor1, 0.0], [this.buttonColor2, 0.5], [this.buttonColor3, 1.0]]
@@ -309,14 +317,15 @@ export struct Pomodoro {
                 })
                 .onActionEnd(() => {
                   this.btnAngle = 0;
-                  this.homoZindex = 99;
+                  //TODO 路由HOMO
+                  router.pushUrl({url:'pages/Homo'});
                 })
             )
         }
         .width('70%')
       }
       .backgroundColor('#232323')
-      .margin({top:'-30%'})
+      .margin({ top: '-30%' })
 
 
       RelativeContainer() {
@@ -674,6 +683,7 @@ export struct Pomodoro {
     }
   }
 
+
   generateStringArray(num: number): Array<string> {
     let result: Array<string> = [];
     if (num <= 20) {
@@ -687,6 +697,125 @@ export struct Pomodoro {
     }
     return result;
   }
+
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: AfterFocusDialog({
+      cancel: () => {
+        this.onCancel()
+      },
+      confirm: () => {
+        this.onAccept()
+      },
+    }),
+    cancel: this.exitApp,
+    autoCancel: true,
+    onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+      console.info("reason=" + JSON.stringify(dismissDialogAction.reason))
+      console.log("dialog onWillDismiss")
+      if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
+        dismissDialogAction.dismiss()
+      }
+      if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
+        dismissDialogAction.dismiss()
+      }
+    },
+    alignment: DialogAlignment.Center,
+    offset: { dx: 0, dy: 20 },
+    gridCount: 4,
+    customStyle: false,
+    cornerRadius: 20,
+  })
+
+  aboutToDisappear() {
+    this.dialogController = null;
+  }
+
+  onCancel() {
+    this.defaultTime = this.focusTime;
+    this.progress = this.focusTime;
+    this.curStage = Stage.FOCUS;
+    console.info('Callback when the first button is clicked')
+  }
+
+  onAccept() {
+    this.defaultTime = this.focusTime;
+    this.progress = this.focusTime;
+    this.curStage = Stage.FOCUS;
+    console.info('Callback when the second button is clicked')
+  }
+
+  exitApp() {
+    this.defaultTime = this.focusTime;
+    this.progress = this.focusTime;
+    this.curStage = Stage.FOCUS;
+    console.info('Click the callback in the blank area')
+  }
 }
 
 
+@CustomDialog
+@Component
+struct AfterFocusDialog {
+  private widthPx: number = display.getDefaultDisplaySync().width;
+  controller?: CustomDialogController
+  cancel: () => void = () => {
+  }
+  confirm: () => void = () => {
+  }
+
+  build() {
+
+    Flex({
+      justifyContent: FlexAlign.SpaceBetween,
+      direction: FlexDirection.Column,
+      alignItems: ItemAlign.Center
+    }) {
+      Text(`Ciallo～(∠・ω< )⌒★`).fontSize(20).margin({ top: 10, bottom: 10 }).fontColor('#eaeaea')
+
+      Text('辛苦啦，番茄钟结束啦！').fontSize(20).margin({ top: 10, bottom: 10 }).fontColor('#eaeaea')
+
+
+      Button() {
+        TextGradient({ message: 'Reset' })
+      }
+      .onClick(() => {
+        if (this.controller != undefined) {
+          this.controller.close();
+          this.confirm()
+        }
+      })
+      .fontSize(30)
+      .width(`${px2vp(this.widthPx) * 0.3}vp`)
+      .height(`${px2vp(this.widthPx) * 0.15}vp`)
+      .borderWidth(3)
+      .borderColor('#ffb0003d')
+      .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.9 })
+      .margin({ bottom: 20 })
+      .backgroundColor('#444')
+
+    }
+    .borderRadius(20)
+    .width('100%')
+    .height('50%')
+    .backgroundColor('#444')
+  }
+}
+
+@Component
+export default struct TextGradient {
+  @State message: ResourceStr = '';
+
+  build() {
+    Row() {
+      Text(this.message)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .blendMode(BlendMode.DST_IN, BlendApplyType.OFFSCREEN)
+    }
+    .linearGradient({
+      angle: 30,
+      colors: [['#ff7c012c', 0.0], ['#ffb0003d', 0.3], ['#D4004A', 1.0]]
+    })
+    .blendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN)
+  }
+}

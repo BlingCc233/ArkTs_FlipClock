@@ -26,6 +26,7 @@ struct Index {
     Column() {
       Text(name)
         .fontColor(Color.White)
+        .opacity(this.currentIndex === index ? 1 : 0.7)
         .fontSize(this.currentIndex === index ? '18fp' : '14fp')
         .fontWeight(this.currentIndex === index ? Constants.FONT_WEIGHT_TAB * 2 : Constants.FONT_WEIGHT_TAB)
         .lineHeight('22vp')
@@ -99,8 +100,8 @@ struct EachContent {
           alignItems: ItemAlign.Center
         }) {
           Row() {
-            Text(`${this.time.getFullYear().toString()} - ${this.time.getMonth() % 10 == this.time.getMonth() ? '0' :
-              ''}${this.time.getMonth().toString()} - ${this.time.getDate() % 10 == this.time.getDate() ? '0' :
+            Text(`${this.time.getFullYear().toString()} - ${this.time.getMonth() % 9 == this.time.getMonth() ? '0' :
+              ''}${(this.time.getMonth()+1).toString()} - ${this.time.getDate() % 10 == this.time.getDate() ? '0' :
               ''}${this.time.getDate().toString()}`)
               .fontColor('#aaa')
               .fontSize('23vp')
@@ -151,7 +152,7 @@ struct EachContent {
         .backgroundColor($r('app.color.stack_background_color'))
       }
       if (this.whichPage == 2) {
-        Homo()
+        Cofeeling()
       }
     }
 
