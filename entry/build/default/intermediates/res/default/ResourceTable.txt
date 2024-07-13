@@ -4,6 +4,7 @@ string MainAbility_desc 0x01000004
 string MainAbility_label 0x01000005
 string app_name 0x01000000
 string bottom_title_height 0x01000007
+string calendar 0x01000006
 string common_bar_chart_height 0x0100000d
 string common_navigation_height 0x0100000e
 string common_navigation_width 0x0100000f
@@ -13,6 +14,7 @@ string common_text_height 0x01000012
 string common_text_width 0x01000013
 string divider_height 0x0100001c
 string entry_desc 0x0100001d
+string friday 0x01000008
 string main_page_padding 0x0100002b
 string main_page_padding2 0x0100002c
 string main_page_padding5 0x0100002d
@@ -20,6 +22,7 @@ string main_page_padding_top 0x0100002e
 string main_page_swiper_height 0x0100002f
 string max_size 0x01000033
 string module_desc 0x01000036
+string monday 0x01000009
 string ohos_id_card_margin_start 0x0100003d
 string ohos_id_card_padding_start 0x0100003e
 string ohos_id_corner_radius_default_l 0x0100003f
@@ -33,10 +36,16 @@ string ohos_id_text_size_body2 0x01000046
 string ohos_id_text_size_body3 0x01000047
 string ohos_id_text_size_caption 0x01000048
 string ohos_id_text_size_headline 0x01000049
+string saturday 0x0100000a
 string scroll_width 0x01000054
+string sunday 0x0100000b
 string swiper_stack_height1 0x0100006a
 string swiper_stack_height2 0x0100006b
 string swiper_stack_width 0x0100006c
+string thursday 0x0100000c
+string today 0x01000014
+string tuesday 0x01000015
+string wednesday 0x01000016
 string width_full 0x0100009a
 string width_ninety_percent 0x0100009b
 color background_color 0x0100009c

@@ -160,7 +160,43 @@
     {
       "name": "max_size",
       "value": "100%"
-    }
+    },
 
+    {
+      "name": "calendar",
+      "value": "calendar"
+    },
+    {
+      "name": "monday",
+      "value": "MON"
+    },
+    {
+      "name": "tuesday",
+      "value": "TUE"
+    },
+    {
+      "name": "wednesday",
+      "value": "WED"
+    },
+    {
+      "name": "thursday",
+      "value": "THU"
+    },
+    {
+      "name": "friday",
+      "value": "FRI"
+    },
+    {
+      "name": "saturday",
+      "value": "SAT"
+    },
+    {
+      "name": "sunday",
+      "value": "SUN"
+    },
+    {
+      "name": "today",
+      "value": "Today"
+    }
   ]
 }

@@ -1207,7 +1207,8 @@
       ],
       "parent": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.image.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/application/Context.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/application/Context.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts"
       ],
       "error": false
     },
@@ -1239,7 +1240,8 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.resourceManager.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/bundleManager/ApplicationInfo.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/component/units.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/build-tools/ets-loader/declarations/units.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/build-tools/ets-loader/declarations/units.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.sendableResourceManager.d.ets"
       ],
       "error": false
     },
@@ -1723,7 +1725,8 @@
       "children": [],
       "parent": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/component/time_picker.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/build-tools/ets-loader/declarations/time_picker.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/build-tools/ets-loader/declarations/time_picker.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts"
       ],
       "error": false
     },
@@ -3292,7 +3295,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/common/CommonConstants.ets": {
-      "mtimeMs": 1720677974279.9688,
+      "mtimeMs": 1720891055104.7737,
       "children": [],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets",
@@ -3829,7 +3832,8 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkTS.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/arkts/@arkts.utils.d.ets",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/arkts/@arkts.collections.d.ets",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.data.sendablePreferences.d.ets"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.data.sendablePreferences.d.ets",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/global/sendableResource.d.ets"
       ],
       "error": false
     },
@@ -3849,7 +3853,8 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/arkts/@arkts.lang.d.ets"
       ],
       "parent": [
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkTS.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkTS.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/global/sendableResource.d.ets"
       ],
       "error": false
     },
@@ -4296,8 +4301,10 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Cofeeling.ets": {
-      "mtimeMs": 1720875767809.5356,
-      "children": [],
+      "mtimeMs": 1720891296783.314,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts"
+      ],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets"
       ],
@@ -4446,6 +4453,49 @@
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets",
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/PageTurningAnimation.ets",
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts": {
+      "mtimeMs": 1718821812000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.i18n.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.intl.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.resourceManager.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.sendableResourceManager.d.ets"
+      ],
+      "parent": [
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Cofeeling.ets"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.i18n.d.ts": {
+      "mtimeMs": 1718821788000,
+      "children": [],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.sendableResourceManager.d.ets": {
+      "mtimeMs": 1718821788000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/global/resource.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/global/sendableResource.d.ets"
+      ],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/global/sendableResource.d.ets": {
+      "mtimeMs": 1718821789000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/arkts/@arkts.lang.d.ets",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/arkts/@arkts.collections.d.ets"
+      ],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.sendableResourceManager.d.ets"
       ],
       "error": false
     }

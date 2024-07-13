@@ -50,8 +50,13 @@
     "If"
   ],
   "entry/src/main/ets/pages/Cofeeling.ets": [
-    "Row",
     "Column",
-    "Text"
+    "Flex",
+    "ForEach",
+    "Text",
+    "Row",
+    "Image",
+    "Blank",
+    "If"
   ]
 }

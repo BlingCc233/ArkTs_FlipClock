@@ -25,8 +25,32 @@
 			"id":	"0x01000005"
 		}, {
 			"type":	"string",
+			"name":	"calendar",
+			"id":	"0x01000006"
+		}, {
+			"type":	"string",
 			"name":	"bottom_title_height",
 			"id":	"0x01000007"
+		}, {
+			"type":	"string",
+			"name":	"friday",
+			"id":	"0x01000008"
+		}, {
+			"type":	"string",
+			"name":	"monday",
+			"id":	"0x01000009"
+		}, {
+			"type":	"string",
+			"name":	"saturday",
+			"id":	"0x0100000A"
+		}, {
+			"type":	"string",
+			"name":	"sunday",
+			"id":	"0x0100000B"
+		}, {
+			"type":	"string",
+			"name":	"thursday",
+			"id":	"0x0100000C"
 		}, {
 			"type":	"string",
 			"name":	"common_bar_chart_height",
@@ -55,6 +79,18 @@
 			"type":	"string",
 			"name":	"common_text_width",
 			"id":	"0x01000013"
+		}, {
+			"type":	"string",
+			"name":	"today",
+			"id":	"0x01000014"
+		}, {
+			"type":	"string",
+			"name":	"tuesday",
+			"id":	"0x01000015"
+		}, {
+			"type":	"string",
+			"name":	"wednesday",
+			"id":	"0x01000016"
 		}, {
 			"type":	"string",
 			"name":	"divider_height",
