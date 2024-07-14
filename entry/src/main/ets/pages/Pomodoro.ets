@@ -3,7 +3,6 @@ import { curves } from '@kit.ArkUI';
 import Prompt from '@system.prompt'
 import { Homo } from './Homo';
 import router from '@ohos.router'
-import setting from './setting.json'
 import { vibrator } from '@kit.SensorServiceKit';
 
 export enum Stage {
@@ -107,12 +106,14 @@ export struct Pomodoro {
         this.remainTime = Math.floor(this.remainSec / 60) + 1;
       }
       if (this.remainSec == 0) {
-        vibrator.startVibration({
-          type: 'time',
-          duration: 2000
-        }, {
-          usage: 'notification'
-        });
+        if(this.isVibration) {
+          vibrator.startVibration({
+            type: 'time',
+            duration: 2000
+          }, {
+            usage: 'notification'
+          });
+        }
         if (lastStage == Stage.FOCUS && this.breakInterval > 0) {
           this.curStage = Stage.BREAK;
           this.breakInterval--;
