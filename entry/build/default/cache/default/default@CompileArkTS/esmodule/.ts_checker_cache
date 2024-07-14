@@ -148,7 +148,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/entryability/EntryAbility.ets": {
-      "mtimeMs": 1720761960313.8926,
+      "mtimeMs": 1720942058075.5679,
       "children": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.AbilityKit.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.PerformanceAnalysisKit.d.ts",
@@ -972,7 +972,9 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.data.relationalStore.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.data.sendablePreferences.d.ets",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.sensor.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.vibrator.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.vibrator.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.audio.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.audioHaptic.d.ts"
       ],
       "error": false
     },
@@ -3297,7 +3299,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/common/CommonConstants.ets": {
-      "mtimeMs": 1720891055104.7737,
+      "mtimeMs": 1720942063995.8513,
       "children": [],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets",
@@ -3307,7 +3309,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets": {
-      "mtimeMs": 1720875853498.1377,
+      "mtimeMs": 1720947978906.348,
       "children": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/FlipClock.ets",
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/common/CommonConstants.ets",
@@ -3631,7 +3633,8 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/arkts/@arkts.math.Decimal.d.ets"
       ],
       "parent": [
-        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets"
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets",
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets"
       ],
       "error": false
     },
@@ -3911,7 +3914,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/viewmodel/TabViewModel.ets": {
-      "mtimeMs": 1720747563640.486,
+      "mtimeMs": 1720947506200.2917,
       "children": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/viewmodel/TabItem.ets"
       ],
@@ -3921,7 +3924,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/viewmodel/TabItem.ets": {
-      "mtimeMs": 1720491008915.3025,
+      "mtimeMs": 1720947491761.1191,
       "children": [],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets",
@@ -3980,7 +3983,8 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.resourceschedule.systemload.d.ts"
       ],
       "parent": [
-        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/entryability/EntryAbility.ets"
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/entryability/EntryAbility.ets",
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets"
       ],
       "error": false
     },
@@ -4277,14 +4281,17 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets": {
-      "mtimeMs": 1720932591913.1558,
+      "mtimeMs": 1720947701831.946,
       "children": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@system.prompt.d.ts",
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Homo.ets",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.router.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.SensorServiceKit.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.SensorServiceKit.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.AudioKit.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.BasicServicesKit.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkTS.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.AudioKit.d.ts"
       ],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets"
@@ -4307,7 +4314,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Cofeeling.ets": {
-      "mtimeMs": 1720925914610.3442,
+      "mtimeMs": 1720934622771.7024,
       "children": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts"
       ],
@@ -4551,6 +4558,48 @@
       "children": [],
       "parent": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.SensorServiceKit.d.ts"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.AudioKit.d.ts": {
+      "mtimeMs": 1718821812000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.audio.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.audioHaptic.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.avVolumePanel.d.ets"
+      ],
+      "parent": [
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.audio.d.ts": {
+      "mtimeMs": 1718821788000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.base.d.ts"
+      ],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.AudioKit.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.audioHaptic.d.ts"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.audioHaptic.d.ts": {
+      "mtimeMs": 1718821788000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.base.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.audio.d.ts"
+      ],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.AudioKit.d.ts"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.multimedia.avVolumePanel.d.ets": {
+      "mtimeMs": 1718821788000,
+      "children": [],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.AudioKit.d.ts"
       ],
       "error": false
     }

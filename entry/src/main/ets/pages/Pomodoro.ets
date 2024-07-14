@@ -1,9 +1,13 @@
 import { display, RectShape } from '@kit.ArkUI';
 import { curves } from '@kit.ArkUI';
-import Prompt from '@system.prompt'
 import { Homo } from './Homo';
 import router from '@ohos.router'
 import { vibrator } from '@kit.SensorServiceKit';
+import { audioHaptic } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uri } from '@kit.ArkTS';
+import { audio } from '@kit.AudioKit';
+
 
 export enum Stage {
   FOCUS,
@@ -135,6 +139,8 @@ export struct Pomodoro {
       }
     }, 1000)
   }
+
+
 
   @Builder
   descriptionBuilderImage() {
@@ -622,6 +628,9 @@ export struct Pomodoro {
 
     });
   }
+
+
+
 }
 
 

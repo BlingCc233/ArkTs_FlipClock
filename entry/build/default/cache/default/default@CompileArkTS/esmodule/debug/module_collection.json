@@ -2,11 +2,5 @@
   "entry/src/main/ets/pages/Index.ets": [
     "ohos.display",
     "ohos.hilog"
-  ],
-  "entry/src/main/ets/pages/Pomodoro.ets": [
-    "ohos.display",
-    "ohos.curves",
-    "ohos.router",
-    "ohos.vibrator"
   ]
 }

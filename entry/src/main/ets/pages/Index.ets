@@ -152,7 +152,7 @@ struct EachContent {
         .backgroundColor($r('app.color.stack_background_color'))
       }
       if (this.whichPage == 2) {
-        Cofeeling()
+        Cofeeling();
       }
     }
 

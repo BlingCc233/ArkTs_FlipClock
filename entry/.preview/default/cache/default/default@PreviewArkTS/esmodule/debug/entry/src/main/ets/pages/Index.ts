@@ -14,7 +14,6 @@ interface Index_Params {
     tabArray?: Array<TabItem>;
     currentIndex?: number;
 }
-import { FlipClock } from "@bundle:com.blingcc.flipclock/entry/ets/pages/FlipClock";
 import Constants from "@bundle:com.blingcc.flipclock/entry/ets/common/CommonConstants";
 import display from "@ohos:display";
 import hilog from "@ohos:hilog";
@@ -22,6 +21,7 @@ import { initTabData } from "@bundle:com.blingcc.flipclock/entry/ets/viewmodel/T
 import type { TabItem } from '../viewmodel/TabItem';
 import { Pomodoro } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Pomodoro";
 import { PageTurningAnimation, enumT } from "@bundle:com.blingcc.flipclock/entry/ets/pages/PageTurningAnimation";
+import { Cofeeling } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Cofeeling";
 class Index extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -71,13 +71,14 @@ class Index extends ViewPU {
     tabBuilder(index: number, name: string, parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
-            Column.debugLine("entry/src/main/ets/pages/Index.ets(24:5)");
+            Column.debugLine("entry/src/main/ets/pages/Index.ets(26:5)");
             Column.width(Constants.PERCENT_MAX);
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create(name);
-            Text.debugLine("entry/src/main/ets/pages/Index.ets(25:7)");
+            Text.debugLine("entry/src/main/ets/pages/Index.ets(27:7)");
             Text.fontColor(Color.White);
+            Text.opacity(this.currentIndex === index ? 1 : 0.7);
             Text.fontSize(this.currentIndex === index ? '18fp' : '14fp');
             Text.fontWeight(this.currentIndex === index ? Constants.FONT_WEIGHT_TAB * 2 : Constants.FONT_WEIGHT_TAB);
             Text.lineHeight('22vp');
@@ -89,7 +90,7 @@ class Index extends ViewPU {
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Tabs.create({ barPosition: BarPosition.Start });
-            Tabs.debugLine("entry/src/main/ets/pages/Index.ets(36:5)");
+            Tabs.debugLine("entry/src/main/ets/pages/Index.ets(39:5)");
             Tabs.barWidth(Constants.PERCENT_MAX);
             Tabs.barHeight('52vp');
             Tabs.padding({
@@ -115,7 +116,7 @@ class Index extends ViewPU {
                                 if (isInitialRender) {
                                     let componentCall = new EachContent(this, {
                                         whichPage: item.id
-                                    }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 39 });
+                                    }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 42 });
                                     ViewPU.create(componentCall);
                                     let paramsLambda = () => {
                                         return {
@@ -135,7 +136,7 @@ class Index extends ViewPU {
                     TabContent.tabBar({ builder: () => {
                             this.tabBuilder.call(this, item.id, item.name);
                         } });
-                    TabContent.debugLine("entry/src/main/ets/pages/Index.ets(38:9)");
+                    TabContent.debugLine("entry/src/main/ets/pages/Index.ets(41:9)");
                 }, TabContent);
                 TabContent.pop();
             };
@@ -260,7 +261,7 @@ class EachContent extends ViewPU {
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
-            Column.debugLine("entry/src/main/ets/pages/Index.ets(89:5)");
+            Column.debugLine("entry/src/main/ets/pages/Index.ets(92:5)");
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
@@ -269,7 +270,7 @@ class EachContent extends ViewPU {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 91 });
+                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 94 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};
@@ -299,7 +300,7 @@ class EachContent extends ViewPU {
                             justifyContent: FlexAlign.Center,
                             alignItems: ItemAlign.Center
                         });
-                        Flex.debugLine("entry/src/main/ets/pages/Index.ets(94:9)");
+                        Flex.debugLine("entry/src/main/ets/pages/Index.ets(97:9)");
                         Flex.offset({
                             x: this.offsetPos,
                             y: this.offsetPos
@@ -310,14 +311,14 @@ class EachContent extends ViewPU {
                     }, Flex);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Row.create();
-                        Row.debugLine("entry/src/main/ets/pages/Index.ets(99:11)");
+                        Row.debugLine("entry/src/main/ets/pages/Index.ets(102:11)");
                         Row.translate({ x: 0, y: `${px2vp(this.widthPx) * 0.1}vp` });
                     }, Row);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Text.create(`${this.time.getFullYear().toString()} - ${this.time.getMonth() % 10 == this.time.getMonth() ? '0' :
-                            ''}${this.time.getMonth().toString()} - ${this.time.getDate() % 10 == this.time.getDate() ? '0' :
+                        Text.create(`${this.time.getFullYear().toString()} - ${this.time.getMonth() % 9 == this.time.getMonth() ? '0' :
+                            ''}${(this.time.getMonth() + 1).toString()} - ${this.time.getDate() % 10 == this.time.getDate() ? '0' :
                             ''}${this.time.getDate().toString()}`);
-                        Text.debugLine("entry/src/main/ets/pages/Index.ets(100:13)");
+                        Text.debugLine("entry/src/main/ets/pages/Index.ets(103:13)");
                         Text.fontColor('#aaa');
                         Text.fontSize('23vp');
                         Text.opacity(this.textOpacity);
@@ -325,7 +326,7 @@ class EachContent extends ViewPU {
                     Text.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Image.create({ "id": 16777544, "type": 20000, params: [], "bundleName": "com.blingcc.flipclock", "moduleName": "entry" });
-                        Image.debugLine("entry/src/main/ets/pages/Index.ets(106:13)");
+                        Image.debugLine("entry/src/main/ets/pages/Index.ets(109:13)");
                         Image.fillColor('#aaa');
                         Image.width('28vp');
                         Image.height('27vp');
@@ -348,7 +349,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.HOUR
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 119 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 122 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -384,7 +385,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.MIN
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 126 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 129 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -420,7 +421,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.SEC
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 134 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 137 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -459,7 +460,7 @@ class EachContent extends ViewPU {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new FlipClock(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 152 });
+                                let componentCall = new Cofeeling(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 155 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};
@@ -469,7 +470,7 @@ class EachContent extends ViewPU {
                             else {
                                 this.updateStateVarsOfChildByElmtId(elmtId, {});
                             }
-                        }, { name: "FlipClock" });
+                        }, { name: "Cofeeling" });
                     }
                 });
             }
