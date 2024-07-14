@@ -1,1 +1,1 @@
-[]
+[{"time":"2024-07-13T17:23:05.109Z","category":"etsTransform","level":"warn","msg":"\u001b[33mArkTS:WARN File: /Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Cofeeling.ets:88:7\n Property 'goToday' is private and can not be initialized through the component constructor.","type":"plugin_log"}]

@@ -970,7 +970,9 @@
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.data.distributedKVStore.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.data.preferences.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.data.relationalStore.d.ts",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.data.sendablePreferences.d.ets"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.data.sendablePreferences.d.ets",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.sensor.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.vibrator.d.ts"
       ],
       "error": false
     },
@@ -4275,18 +4277,22 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets": {
-      "mtimeMs": 1720876325055.622,
+      "mtimeMs": 1720932591913.1558,
       "children": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.ArkUI.d.ts",
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@system.prompt.d.ts",
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Homo.ets",
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.router.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.router.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.SensorServiceKit.d.ts"
       ],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets"
       ],
-      "error": false
+      "error": true,
+      "errorCodes": [
+        28007
+      ]
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/PageTurningAnimation.ets": {
       "mtimeMs": 1720764664348.13,
@@ -4301,7 +4307,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Cofeeling.ets": {
-      "mtimeMs": 1720891296783.314,
+      "mtimeMs": 1720925914610.3442,
       "children": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts"
       ],
@@ -4496,6 +4502,55 @@
       ],
       "parent": [
         "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.sendableResourceManager.d.ets"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.SensorServiceKit.d.ts": {
+      "mtimeMs": 1718821812000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.sensor.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.vibrator.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@system.sensor.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@system.vibrator.d.ts"
+      ],
+      "parent": [
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Pomodoro.ets"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.sensor.d.ts": {
+      "mtimeMs": 1718821788000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.base.d.ts"
+      ],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.SensorServiceKit.d.ts"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.vibrator.d.ts": {
+      "mtimeMs": 1718821788000,
+      "children": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@ohos.base.d.ts"
+      ],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.SensorServiceKit.d.ts"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@system.sensor.d.ts": {
+      "mtimeMs": 1718821788000,
+      "children": [],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.SensorServiceKit.d.ts"
+      ],
+      "error": false
+    },
+    "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/api/@system.vibrator.d.ts": {
+      "mtimeMs": 1718821788000,
+      "children": [],
+      "parent": [
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.SensorServiceKit.d.ts"
       ],
       "error": false
     }

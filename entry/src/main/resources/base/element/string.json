@@ -168,35 +168,35 @@
     },
     {
       "name": "monday",
-      "value": "MON"
+      "value": "壹"
     },
     {
       "name": "tuesday",
-      "value": "TUE"
+      "value": "貳"
     },
     {
       "name": "wednesday",
-      "value": "WED"
+      "value": "叄"
     },
     {
       "name": "thursday",
-      "value": "THU"
+      "value": "肆"
     },
     {
       "name": "friday",
-      "value": "FRI"
+      "value": "伍"
     },
     {
       "name": "saturday",
-      "value": "SAT"
+      "value": "陸"
     },
     {
       "name": "sunday",
-      "value": "SUN"
+      "value": "日"
     },
     {
       "name": "today",
-      "value": "Today"
+      "value": "今"
     }
   ]
 }

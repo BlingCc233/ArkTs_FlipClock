@@ -4,12 +4,14 @@ import Prompt from '@system.prompt'
 import { Homo } from './Homo';
 import router from '@ohos.router'
 import setting from './setting.json'
+import { vibrator } from '@kit.SensorServiceKit';
 
 export enum Stage {
   FOCUS,
   BREAK,
   LONGBREAK
 }
+
 PersistentStorage.persistProp('focusTime', 25);
 PersistentStorage.persistProp('breakTime', 5);
 PersistentStorage.persistProp('longBreak', 10);
@@ -27,7 +29,6 @@ export struct Pomodoro {
   @StorageLink('longBreak') longBreak: number = 10;
   @StorageLink('isRemind') isRemind: boolean = true;
   @StorageLink('isVibration') isVibration: boolean = true;
-
   @State defaultTime: number = this.focusTime;
   private breakInterval: number = 4;
   @State remainTime: number = this.defaultTime;
@@ -106,6 +107,12 @@ export struct Pomodoro {
         this.remainTime = Math.floor(this.remainSec / 60) + 1;
       }
       if (this.remainSec == 0) {
+        vibrator.startVibration({
+          type: 'time',
+          duration: 2000
+        }, {
+          usage: 'notification'
+        });
         if (lastStage == Stage.FOCUS && this.breakInterval > 0) {
           this.curStage = Stage.BREAK;
           this.breakInterval--;
@@ -219,39 +226,6 @@ export struct Pomodoro {
                     if (this.dialogController != null) {
                       this.dialogController.open()
                     }
-                    // AlertDialog.show(
-                    //   {
-                    //     title: `Ciallo～(∠・ω< )⌒★`,
-                    //     backgroundColor: '#aaa',
-                    //     backgroundBlurStyle: BlurStyle.BACKGROUND_ULTRA_THICK,
-                    //     message: `
-                    //       <p align="center">
-                    //       <a href="https://github.com/BlingCc233/go-cqhttp-ccbot/releases">
-                    //         <img src="https://img.shields.io/github/v/release/BlingCc233/go-cqhttp-ccbot?color=blueviolet&include_prereleases&style=for-the-badge" alt="release">
-                    //       </a>
-                    //     </p>
-                    //     <h1>番茄钟结束啦！</h1>
-                    //     `,
-                    //     alignment: DialogAlignment.Center,
-                    //     autoCancel: true,
-                    //     height: '40%',
-                    //     confirm: {
-                    //       value: 'Reset',
-                    //       backgroundColor: '#4e4e4e',
-                    //       fontColor: '#eaeaea',
-                    //       action: () => {
-                    //         this.defaultTime = this.focusTime;
-                    //         this.progress = this.focusTime;
-                    //         this.curStage = Stage.FOCUS;
-                    //       }
-                    //     },
-                    //     cancel: () => {
-                    //       this.defaultTime = this.focusTime;
-                    //       this.progress = this.focusTime;
-                    //       this.curStage = Stage.FOCUS;
-                    //     }
-                    //   }
-                    // )
                   }
                 })
             )
@@ -317,8 +291,7 @@ export struct Pomodoro {
                 })
                 .onActionEnd(() => {
                   this.btnAngle = 0;
-                  //TODO 路由HOMO
-                  router.pushUrl({url:'pages/Homo'});
+                  router.pushUrl({ url: 'pages/Homo' });
                 })
             )
         }
@@ -418,189 +391,34 @@ export struct Pomodoro {
             }
 
             ListItem() {
-              Row() {
-                Text('Focus time')
-                  .height(48)
-                  .fontSize(20)
-                  .fontColor('#eaeaea')
-                  .textAlign(TextAlign.Start)
-                  .fontFamily('HarmonyHeiTi-Medium')
-                  .padding({ bottom: 4, top: 4, left: 24 })
-
-                Blank()
-                Text(this.focusTime.toString() + 'min')
-                  .height(48)
-                  .fontSize(16)
-                  .fontColor('#aaa')
-                  .textAlign(TextAlign.Start)
-                  .fontFamily('HarmonyHeiTi-Medium')
-                  .padding({ bottom: 4, top: 4, right: 8 })
-
-                Image($r('sys.media.ohos_ic_public_arrow_right'))
-                  .fillColor('#2a2a2a')
-                  .width('25vp')
-                  .height(48)
-                  .padding({ right: 12 })
-              }
-              .width('100%')
+              SettingList({
+                hereTime: this.focusTime,
+                hereStage: Stage.FOCUS
+              });
             }
             .onClick(() => {
-              TextPickerDialog.show({
-                range: this.generateStringArray(50),
-                selected: this.defaultTime - 10,
-                onAccept: (value: TextPickerResult) => {
-                  // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-                  console.log(String(value.index));
-                  this.focusTime = parseInt(String(value.value));
-                  if (this.curStage == Stage.FOCUS) {
-                    this.defaultTime = this.focusTime;
-                    this.progress = this.defaultTime;
-                    this.remainTime = this.defaultTime;
-                    this.remainSec = this.defaultTime * 60;
-                  }
-
-                },
-                onCancel: () => {
-                  console.log('cancle');
-                },
-                onChange: (value: TextPickerResult) => {
-                  console.log(value.value.toString());
-                },
-                defaultPickerItemHeight: 50,
-                backgroundColor: '#444',
-                acceptButtonStyle: { fontColor: '#eaeaea' },
-                cancelButtonStyle: { fontColor: '#aaaaaa' },
-                disappearTextStyle: { color: '#aaa', font: { size: '20vp', weight: FontWeight.Lighter } },
-                backgroundBlurStyle: BlurStyle.BACKGROUND_ULTRA_THICK,
-                textStyle: { color: '#eaeaea', font: { size: '20vp', weight: FontWeight.Lighter } },
-                selectedTextStyle: { color: '#ffd40050', font: { size: '25vp', weight: FontWeight.Normal } },
-
-              });
+              this.TimePick(Stage.FOCUS, 50);
             })
 
             ListItem() {
-              Row() {
-                Text('Break time')
-                  .height(48)
-                  .fontSize(20)
-                  .fontColor('#eaeaea')
-                  .textAlign(TextAlign.Start)
-                  .fontFamily('HarmonyHeiTi-Medium')
-                  .padding({ bottom: 4, top: 4, left: 24 })
-
-                Blank()
-                Text(this.breakTime.toString() + 'min')
-                  .height(48)
-                  .fontSize(16)
-                  .fontColor('#aaa')
-                  .textAlign(TextAlign.Start)
-                  .fontFamily('HarmonyHeiTi-Medium')
-                  .padding({ bottom: 4, top: 4, right: 8 })
-
-                Image($r('sys.media.ohos_ic_public_arrow_right'))
-                  .fillColor('#2a2a2a')
-                  .width('25vp')
-                  .height(48)
-                  .padding({ right: 12 })
-              }
-              .width('100%')
+              SettingList({
+                hereTime: this.breakTime,
+                hereStage: Stage.BREAK
+              });
             }
             .onClick(() => {
-              TextPickerDialog.show({
-                range: this.generateStringArray(10),
-                selected: this.breakTime,
-                onAccept: (value: TextPickerResult) => {
-                  // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-                  console.log(String(value.index));
-                  this.breakTime = parseInt(String(value.value));
-
-                  if (this.curStage == Stage.BREAK) {
-                    this.defaultTime = this.breakTime;
-                    this.progress = this.defaultTime;
-                    this.remainTime = this.defaultTime;
-                    this.remainSec = this.defaultTime * 60;
-                  }
-
-                },
-                onCancel: () => {
-                  console.log('cancle');
-                },
-                onChange: (value: TextPickerResult) => {
-                  console.log(value.value.toString());
-                },
-                defaultPickerItemHeight: 50,
-                backgroundColor: '#444',
-                acceptButtonStyle: { fontColor: '#eaeaea' },
-                cancelButtonStyle: { fontColor: '#aaaaaa' },
-                disappearTextStyle: { color: '#aaa', font: { size: '20vp', weight: FontWeight.Lighter } },
-                backgroundBlurStyle: BlurStyle.BACKGROUND_ULTRA_THICK,
-                textStyle: { color: '#eaeaea', font: { size: '20vp', weight: FontWeight.Lighter } },
-                selectedTextStyle: { color: '#ffd40050', font: { size: '25vp', weight: FontWeight.Normal } },
-
-              });
+              this.TimePick(Stage.BREAK, 10);
             })
 
             ListItem() {
-              Row() {
-                Text('Long break')
-                  .height(48)
-                  .fontSize(20)
-                  .fontColor('#eaeaea')
-                  .textAlign(TextAlign.Start)
-                  .fontFamily('HarmonyHeiTi-Medium')
-                  .padding({ bottom: 4, top: 4, left: 24 })
-
-                Blank()
-                Text(this.longBreak.toString() + 'min')
-                  .height(48)
-                  .fontSize(16)
-                  .fontColor('#aaa')
-                  .textAlign(TextAlign.Start)
-                  .fontFamily('HarmonyHeiTi-Medium')
-                  .padding({ bottom: 4, top: 4, right: 8 })
-
-                Image($r('sys.media.ohos_ic_public_arrow_right'))
-                  .fillColor('#2a2a2a')
-                  .width('25vp')
-                  .height(48)
-                  .padding({ right: 12 })
-              }
-              .width('100%')
+              SettingList({
+                hereTime: this.longBreak,
+                hereStage: Stage.LONGBREAK
+              });
             }
             .onClick(() => {
-              TextPickerDialog.show({
-                range: this.generateStringArray(20),
-                selected: this.longBreak,
-                onAccept: (value: TextPickerResult) => {
-                  // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-                  console.log(String(value.index));
-                  this.longBreak = parseInt(String(value.value));
-                  setting.longBreak = this.longBreak;
+              this.TimePick(Stage.LONGBREAK, 20);
 
-                  if (this.curStage == Stage.LONGBREAK) {
-                    this.defaultTime = this.longBreak;
-                    this.progress = this.defaultTime;
-                    this.remainTime = this.defaultTime;
-                    this.remainSec = this.defaultTime * 60;
-
-                  }
-                },
-                onCancel: () => {
-                  console.log('cancle');
-                },
-                onChange: (value: TextPickerResult) => {
-                  console.log(value.value.toString());
-                },
-                defaultPickerItemHeight: 50,
-                backgroundColor: '#444',
-                acceptButtonStyle: { fontColor: '#eaeaea' },
-                cancelButtonStyle: { fontColor: '#aaaaaa' },
-                disappearTextStyle: { color: '#aaa', font: { size: '20vp', weight: FontWeight.Lighter } },
-                backgroundBlurStyle: BlurStyle.BACKGROUND_ULTRA_THICK,
-                textStyle: { color: '#eaeaea', font: { size: '20vp', weight: FontWeight.Lighter } },
-                selectedTextStyle: { color: '#ffd40050', font: { size: '25vp', weight: FontWeight.Normal } },
-
-              });
             })
 
           }
@@ -683,7 +501,6 @@ export struct Pomodoro {
     }
   }
 
-
   generateStringArray(num: number): Array<string> {
     let result: Array<string> = [];
     if (num <= 20) {
@@ -749,6 +566,60 @@ export struct Pomodoro {
     this.progress = this.focusTime;
     this.curStage = Stage.FOCUS;
     console.info('Click the callback in the blank area')
+  }
+
+  TimePick(thisStage: Stage, thisRange: number): void {
+
+    TextPickerDialog.show({
+      range: this.generateStringArray(thisRange),
+      selected: (thisStage == Stage.FOCUS ? this.focusTime - 10 :
+        (thisStage == Stage.BREAK ? this.breakTime : this.longBreak)),
+      onAccept: (value: TextPickerResult) => {
+        // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
+        console.log(String(value.index));
+        if (thisStage == Stage.FOCUS) {
+          this.focusTime = parseInt(String(value.value));
+          if (this.curStage == Stage.FOCUS) {
+            this.defaultTime = this.focusTime;
+          }
+        }
+        if (thisStage == Stage.BREAK) {
+          this.breakTime = parseInt(String(value.value));
+          if (this.curStage == Stage.BREAK) {
+            this.defaultTime = this.breakTime;
+          }
+        }
+        if (thisStage == Stage.LONGBREAK) {
+          this.longBreak = parseInt(String(value.value));
+          if (this.curStage == Stage.LONGBREAK) {
+            this.defaultTime = this.longBreak;
+          }
+        }
+        this.progress = this.defaultTime;
+        this.remainTime = this.defaultTime;
+        this.remainSec = this.defaultTime * 60;
+
+
+      },
+      onCancel: () => {
+        console.log('cancle');
+      },
+      onChange: (value: TextPickerResult) => {
+        vibrator.startVibration(
+          { type: 'preset', effectId: 'haptic.clock.timer', count: 1 },
+          { usage: 'unknown' });
+        console.log(value.value.toString());
+      },
+      defaultPickerItemHeight: 50,
+      backgroundColor: '#444',
+      acceptButtonStyle: { fontColor: '#eaeaea' },
+      cancelButtonStyle: { fontColor: '#aaaaaa' },
+      disappearTextStyle: { color: '#aaa', font: { size: '20vp', weight: FontWeight.Lighter } },
+      backgroundBlurStyle: BlurStyle.BACKGROUND_ULTRA_THICK,
+      textStyle: { color: '#eaeaea', font: { size: '20vp', weight: FontWeight.Lighter } },
+      selectedTextStyle: { color: '#ffd40050', font: { size: '25vp', weight: FontWeight.Normal } },
+
+    });
   }
 }
 
@@ -817,5 +688,39 @@ export default struct TextGradient {
       colors: [['#ff7c012c', 0.0], ['#ffb0003d', 0.3], ['#D4004A', 1.0]]
     })
     .blendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN)
+  }
+}
+
+@Component
+struct SettingList {
+  @Prop hereTime : number;
+  @Prop hereStage : Stage;
+  build() {
+    Row() {
+      Text((this.hereStage == Stage.FOCUS ? 'Focus time' : (this.hereStage == Stage.BREAK ? 'Break time' : 'Long break')))
+        .height(48)
+        .fontSize(20)
+        .fontColor('#eaeaea')
+        .textAlign(TextAlign.Start)
+        .fontFamily('HarmonyHeiTi-Medium')
+        .padding({ bottom: 4, top: 4, left: 24 })
+
+      Blank()
+      Text(this.hereTime.toString() + 'min')
+        .height(48)
+        .fontSize(16)
+        .fontColor('#aaa')
+        .textAlign(TextAlign.Start)
+        .fontFamily('HarmonyHeiTi-Medium')
+        .padding({ bottom: 4, top: 4, right: 8 })
+
+      Image($r('sys.media.ohos_ic_public_arrow_right'))
+        .fillColor('#2a2a2a')
+        .width('25vp')
+        .height(48)
+        .padding({ right: 12 })
+    }
+    .width('100%')
+
   }
 }

@@ -28,9 +28,9 @@
     "ListItem",
     "Blank",
     "Toggle",
-    "TextPickerDialog",
     "PanGesture",
     "CustomDialogController",
+    "TextPickerDialog",
     "If"
   ],
   "entry/src/main/ets/pages/Homo.ets": [

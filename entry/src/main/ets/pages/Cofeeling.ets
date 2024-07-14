@@ -1,17 +1,3 @@
-/*
-* Copyright (c) 2023 Hunan OpenValley Digital Industry Development Co., Ltd.
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
 
 
 import { i18n } from '@kit.LocalizationKit';
@@ -106,8 +92,8 @@ export struct Cofeeling {
                 .width(24)
                 .textAlign(TextAlign.Center)
                 .fontSize(14)
-                .fontColor(day.isToday ? Color.White : Color.Black)
-                .backgroundColor(day.isToday ? Color.Blue : '')
+                .fontColor(day.isToday ? '#232323' : '#eaeaea')
+                .backgroundColor(day.isToday ? '#8fb2c9' : '')
                 .borderRadius(20)
                 .opacity(day.isCurrentMonth ? 1.0 : 0.2)
             })
@@ -119,7 +105,6 @@ export struct Cofeeling {
       .padding({ left: 24, right: 24 })
       .width('100%')
     }
-    .backgroundColor(Color.White)
   }
 }
 
@@ -138,6 +123,7 @@ struct Title {
             .id('pre_month')
             .height(24)
             .width(12)
+            .fillColor(Color.White)
         }
         .margin({ left: 5 })
         .height('100%')
@@ -150,10 +136,11 @@ struct Title {
 
         Text(`${this.currentYear}-${this.currentMonth + 1 >= 10 ? '' : '0'}${this.currentMonth + 1}`)
           .fontSize(16)
-          .fontColor(Color.Black)
+          .fontColor(Color.White)
         Row() {
           Image($r('sys.media.ohos_ic_public_arrow_right'))
             .id('next_month')
+            .fillColor(Color.White)
             .height(24)
             .width(12)
         }
@@ -169,7 +156,7 @@ struct Title {
         Row() {
           Text($r('app.string.today'))
             .id('today')
-            .fontColor(Color.Blue)
+            .fontColor('#8fb2c9')
             .fontSize(16)
             .padding({ right: 24 })
         }
@@ -185,9 +172,9 @@ struct Title {
       Flex({ justifyContent: FlexAlign.SpaceBetween }) {
         ForEach(WEEK_TITLE, (str: Resource) => {
           Text(str)
-            .fontSize(14)
-            .fontColor(Color.Black)
-            .opacity(0.5)
+            .fontSize(12)
+            .fontColor(Color.White)
+            .opacity(0.6)
             .height(24)
             .width(24)
             .textAlign(TextAlign.Center)
