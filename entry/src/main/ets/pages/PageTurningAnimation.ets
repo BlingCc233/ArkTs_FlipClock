@@ -133,17 +133,17 @@ export struct PageTurningAnimation {
       this.oneSecondFromNow = new Date(this.timeData.getTime() + 1000);
       if (this.timeT == enumT.HOUR) {
         this.rotateAngleTextB = 0;
-        this.currentTime = this.nextTime;
+        this.currentTime = this.nextTime % Constants.MAX_HOUR_NUMBER;
 
       }
       if (this.timeT == enumT.MIN) {
         this.rotateAngleTextB = 0;
-        this.currentTime = this.nextTime;
+        this.currentTime = this.nextTime % Constants.MAX_MIN_NUMBER;
 
       }
       if (this.timeT == enumT.SEC) {
         this.rotateAngleTextB = 0;
-        this.currentTime = this.nextTime;
+        this.currentTime = this.nextTime % Constants.MAX_SEC_NUMBER;
 
       }
 
@@ -154,12 +154,8 @@ export struct PageTurningAnimation {
     animateTo({
       duration: Constants.ANIMATE_DURATION,
       onFinish: () => {
-
-
           this.rotateAngleTextA = 0;
           this.pageTurningAnimate();
-
-
       }
     }, () => {
         this.rotateAngleTextA = -90;
