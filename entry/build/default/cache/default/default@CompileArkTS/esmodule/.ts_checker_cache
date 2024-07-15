@@ -77,7 +77,8 @@
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/entryability/EntryAbility.ets",
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets",
-        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/utils/Logger.ets"
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/utils/Logger.ets",
+        "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Cofeeling.ets"
       ],
       "error": false
     },
@@ -3914,7 +3915,7 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/viewmodel/TabViewModel.ets": {
-      "mtimeMs": 1720947506200.2917,
+      "mtimeMs": 1721037746244.234,
       "children": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/viewmodel/TabItem.ets"
       ],
@@ -4311,9 +4312,10 @@
       "error": false
     },
     "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Cofeeling.ets": {
-      "mtimeMs": 1721033809423.851,
+      "mtimeMs": 1721041190234.1287,
       "children": [
-        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts"
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.LocalizationKit.d.ts",
+        "/Applications/DevEco-Studio.app/Contents/sdk/HarmonyOS-NEXT-DB1/openharmony/ets/kits/@kit.PerformanceAnalysisKit.d.ts"
       ],
       "parent": [
         "/Users/ccbling/DevecostudioProjects/arkts-clock/entry/src/main/ets/pages/Index.ets"

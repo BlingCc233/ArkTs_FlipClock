@@ -1,4 +1,5 @@
 import { i18n } from '@kit.LocalizationKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const WEEK_TITLE = [$r('app.string.monday'), $r('app.string.tuesday'), $r('app.string.wednesday'),
   $r('app.string.thursday'), $r('app.string.friday'), $r('app.string.saturday'),
@@ -13,8 +14,8 @@ interface Day {
 
 enum FEELING {
   UNDEFINE = '#232323',
-  EXTREMELY_BAD = '#a7535a',
-  SAD = '#f17666',
+  EXTREMELY_BAD = '#913a4a',
+  SAD = '#a7535a',
   NORMAL = '#92b3a5',
   HAPPY = '#63bbd0',
   ULTRA_HAPPY = '#1772b4'
@@ -25,26 +26,42 @@ interface TodayFeeling{
   color:FEELING
 }
 
-let feelings: Map<number, FEELING> = new Map();
 
-feelings.set(20240509, FEELING.HAPPY);
-
-feelings.set(20240713, FEELING.SAD);
-feelings.set(20240712, FEELING.ULTRA_HAPPY);
-feelings.set(20240714, FEELING.EXTREMELY_BAD);
-feelings.set(20240711, FEELING.NORMAL);
-feelings.set(20240710, FEELING.HAPPY);
+PersistentStorage.persistProp("feelings", new Map<number, FEELING>([]));
 
 
 @Entry
 @Component
 export struct Cofeeling {
+  @StorageLink("feelings") feelings: Map<number, FEELING> = new Map<number, FEELING>([]);
+  initialMap() {
+
+    //找最早的一天
+    // 如果第一天存在就设为那一天
+    this.feelings.set(20240530, FEELING.EXTREMELY_BAD);
+    const keysOfMap = Array.from(this.feelings.keys());
+    keysOfMap.sort();
+    this.firstDay = keysOfMap[0];
+    if(this.firstDay == undefined){
+      this.firstDay = this.todayDate;
+    }
+
+    // this.feelings.set(20240509, FEELING.HAPPY);
+    // this.feelings.set(20240713, FEELING.SAD);
+    // this.feelings.set(20240712, FEELING.ULTRA_HAPPY);
+    // this.feelings.set(20240714, FEELING.EXTREMELY_BAD);
+    // this.feelings.set(20240710, FEELING.HAPPY);
+  }
+
+
   @State viewingMonthIndex: number = 0;
-  // @State daysData: Day[] = [];
   private calendar = i18n.getCalendar('zh-Hans');
   private toDayY: number = this.calendar.get('year');
   private toDayM: number = this.calendar.get('month'); //start from 0
   private toDayD: number = this.calendar.get('date');
+
+  @State todayDate:number = ((this.toDayY*100)+this.toDayM+1)*100+this.toDayD;
+
   private totMonth: number = 0;
   @State currentMonth: number = 0;
   // private firstDay : number = (this.toDayY*100 + this.toDayM)*100 + 1; //本月第一天
@@ -102,8 +119,8 @@ export struct Cofeeling {
     }
     for (let index = 1; index <= currentMonthDays; index++) {
       daysData.push({
-        thisDayColor: feelings.has((currentYear * 100 + currentMonth + 1) * 100 + index) ?
-        feelings.get((currentYear * 100 + currentMonth + 1) * 100 + index) : FEELING.UNDEFINE,
+        thisDayColor: this.feelings.has((currentYear * 100 + currentMonth + 1) * 100 + index) ?
+        this.feelings.get((currentYear * 100 + currentMonth + 1) * 100 + index) : FEELING.UNDEFINE,
         isCurrentMonth: true,
         isToday: this.toDayY === currentYear && this.toDayM === currentMonth && index === this.toDayD,
         date: index
@@ -138,15 +155,9 @@ export struct Cofeeling {
 
   // private temp : Day[] = this.refreshData(0);
   aboutToAppear(): void {
-    //找最早的一天
-    //TODO 如果第一天存在就设为那一天
+    this.initialMap();
 
-    const keysOfMap = Array.from(feelings.keys());
-    keysOfMap.sort()
-    // keysOfMap.forEach((i)=>{
-    //   AlertDialog.show({message:i.toString()})
-    // })
-    this.firstDay = keysOfMap[0];
+
     this.monthWithFirstDay = Math.floor(this.firstDay / 100);
     this.arrForList = this.allMonthIndexes();
     this.viewingMonthIndex = this.allMonthIndexes().length - 1;
@@ -162,11 +173,13 @@ export struct Cofeeling {
       justifyContent:FlexAlign.SpaceAround,
       alignItems: ItemAlign.Center
     }) {
+
       Text('How are you?')
         .fontColor('#eaeaea')
         .textAlign(TextAlign.Center)
         .width('100%')
         .fontSize(30)
+        .fontWeight(FontWeight.Lighter)
 
       Blank()
 
@@ -221,7 +234,9 @@ export struct Cofeeling {
         ForEach(this.arrForList, (item: number) => {
           ListItem() {
             eachMonth({
-              daysData: this.refreshData(item)
+              daysData: this.refreshData(item),
+              todayDate: this.todayDate,
+              feelings: $feelings
             })
           }
         })
@@ -249,6 +264,10 @@ export struct Cofeeling {
             .width('18%')
             .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.8 })
             .opacity(0.8)
+            .onClick(()=>{
+              this.listScroll.scrollToIndex(this.totMonth, true);
+              this.feelings.set(this.todayDate, option.color);
+            })
 
         })
       }
@@ -263,6 +282,8 @@ export struct Cofeeling {
 @Component
 struct eachMonth {
   @Prop daysData: Day[];
+  @Prop todayDate:number;
+  @Link feelings: Map<number, FEELING>;
 
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
@@ -274,9 +295,11 @@ struct eachMonth {
               .width(50)
               .textAlign(TextAlign.Center)
               .fontSize(16)
+              .fontWeight(FontWeight.Normal)
+              .borderRadius(8)
               .fontColor(day.isToday ? '#ffffff' : '#eaeaea')
-              .backgroundColor(day.isToday ? '#666' : day.thisDayColor)// .borderRadius(20)
-              .opacity(day.isCurrentMonth ? 1.0 : 0.2)
+              .backgroundColor(day.isToday ? (this.feelings.has(this.todayDate)?this.feelings.get(this.todayDate) : '#666') : day.thisDayColor)
+              .opacity(day.isCurrentMonth ? 0.9 : 0.2)
           })
         }
         .width('100%')
