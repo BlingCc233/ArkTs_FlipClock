@@ -11,11 +11,12 @@
 - [X] 完全使用Ark Kit原生组件
 - [X] 小而美
 - [X] 彩蛋
+- [X] 心情记录
+- [X] 数据持久化
 
 ## Still Working
-- [ ] 心情记录
-- [ ] 数据持久化
-- [ ] 
+- [ ] 桌面卡片
+- [ ] 铃声提醒
 
 ## 示例图片
 <img src="./screenshot/sample1.gif" width="200px"/> 
