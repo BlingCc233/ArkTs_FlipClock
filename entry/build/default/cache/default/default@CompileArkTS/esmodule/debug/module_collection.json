@@ -2,5 +2,8 @@
   "entry/src/main/ets/pages/Index.ets": [
     "ohos.display",
     "ohos.hilog"
+  ],
+  "entry/src/main/ets/pages/Cofeeling.ets": [
+    "ohos.i18n"
   ]
 }

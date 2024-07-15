@@ -16,13 +16,34 @@
 		"debug": true
 	},
 	"module": {
+		"requestPermissions": [
+			{
+				"name": "ohos.permission.VIBRATE",
+				"reason": "$string:EntryAbility_desc",
+				"usedScene": {
+					"abilities": [
+						"EntryAbility"
+					],
+					"when": "always"
+				}
+			},
+			{
+				"name": "ohos.permission.WRITE_MEDIA",
+				"reason": "$string:EntryAbility_desc",
+				"usedScene": {
+					"abilities": [
+						"EntryAbility"
+					],
+					"when": "always"
+				}
+			}
+		],
 		"name": "entry",
 		"type": "entry",
 		"description": "$string:entry_desc",
 		"mainElement": "MainAbility",
 		"deviceTypes": [
-			"phone",
-			"tablet"
+			"phone"
 		],
 		"deliveryWithInstall": true,
 		"installationFree": false,

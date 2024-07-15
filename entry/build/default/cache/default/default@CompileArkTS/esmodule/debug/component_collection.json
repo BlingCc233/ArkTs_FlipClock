@@ -50,13 +50,16 @@
     "If"
   ],
   "entry/src/main/ets/pages/Cofeeling.ets": [
+    "Scroller",
     "Column",
+    "Row",
+    "Text",
+    "Blank",
     "Flex",
     "ForEach",
-    "Text",
-    "Row",
-    "Image",
-    "Blank",
+    "List",
+    "ListItem",
+    "AlertDialog",
     "If"
   ]
 }

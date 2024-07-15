@@ -13,8 +13,7 @@
           }
         ],
         "DEVICE_TYPES": [
-          "phone",
-          "tablet"
+          "phone"
         ],
         "AOT_COMPILE_MODE": "type"
       }
@@ -39,16 +38,16 @@
       "BUILD_MODE": "debug"
     }
   },
-  "totalTime": 4068970584,
+  "totalTime": 4781060583,
   "moduleNum": 1,
   "taskTime": {
-    "compileArkTS": 2755407417,
+    "compileArkTS": 2878348875,
     "buildArkTS": 0,
     "compileJS": 0,
-    "buildJS": 3287375,
+    "buildJS": 7574917,
     "compileResource": 0,
-    "packageHap": 598837916,
-    "signHap": 1335667
+    "packageHap": 533764416,
+    "signHap": 2133000
   },
   "isIncremental": true,
   "hasIncremental": true,

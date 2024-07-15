@@ -15,18 +15,31 @@
 		"bundleType":	"app",
 		"debug":	true,
 		"iconId":	16777216,
-		"labelId":	16777217,
-		"iconId":	16777216,
-		"labelId":	16777217,
-		"iconId":	16777216,
 		"labelId":	16777217
 	},
 	"module":	{
+		"requestPermissions":	[{
+				"name":	"ohos.permission.VIBRATE",
+				"reason":	"$string:EntryAbility_desc",
+				"usedScene":	{
+					"abilities":	["EntryAbility"],
+					"when":	"always"
+				},
+				"reasonId":	16777218
+			}, {
+				"name":	"ohos.permission.WRITE_MEDIA",
+				"reason":	"$string:EntryAbility_desc",
+				"usedScene":	{
+					"abilities":	["EntryAbility"],
+					"when":	"always"
+				},
+				"reasonId":	16777218
+			}],
 		"name":	"entry",
 		"type":	"entry",
 		"description":	"$string:entry_desc",
 		"mainElement":	"MainAbility",
-		"deviceTypes":	["phone", "tablet"],
+		"deviceTypes":	["phone"],
 		"deliveryWithInstall":	true,
 		"installationFree":	false,
 		"pages":	"$profile:main_pages",
@@ -47,24 +60,12 @@
 				"iconId":	16777434,
 				"labelId":	16777284,
 				"startWindowIconId":	16777434,
-				"startWindowBackgroundId":	16777282,
-				"descriptionId":	16777283,
-				"iconId":	16777434,
-				"labelId":	16777284,
-				"startWindowIconId":	16777434,
-				"startWindowBackgroundId":	16777282,
-				"descriptionId":	16777283,
-				"iconId":	16777434,
-				"labelId":	16777284,
-				"startWindowIconId":	16777434,
 				"startWindowBackgroundId":	16777282
 			}],
 		"packageName":	"entry",
 		"virtualMachine":	"ark12.0.2.0",
 		"compileMode":	"esmodule",
 		"dependencies":	[],
-		"descriptionId":	16777308,
-		"descriptionId":	16777308,
 		"descriptionId":	16777308
 	}
 }
