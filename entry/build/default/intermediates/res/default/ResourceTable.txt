@@ -36,6 +36,7 @@ string ohos_id_text_size_body2 0x01000046
 string ohos_id_text_size_body3 0x01000047
 string ohos_id_text_size_caption 0x01000048
 string ohos_id_text_size_headline 0x01000049
+string reason 0x01000017
 string saturday 0x0100000a
 string scroll_width 0x01000054
 string sunday 0x0100000b

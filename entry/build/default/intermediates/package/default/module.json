@@ -34,6 +34,14 @@
 					"when":	"always"
 				},
 				"reasonId":	16777218
+			}, {
+				"name":	"ohos.permission.PUBLISH_AGENT_REMINDER",
+				"reason":	"$string:reason",
+				"usedScene":	{
+					"abilities":	["EntryAbility"],
+					"when":	"inuse"
+				},
+				"reasonId":	16777239
 			}],
 		"name":	"entry",
 		"type":	"entry",

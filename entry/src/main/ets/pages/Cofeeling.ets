@@ -38,7 +38,7 @@ export struct Cofeeling {
 
     //找最早的一天
     // 如果第一天存在就设为那一天
-    this.feelings.set(20240530, FEELING.EXTREMELY_BAD);
+    // this.feelings.set(20240530, FEELING.EXTREMELY_BAD);
     const keysOfMap = Array.from(this.feelings.keys());
     keysOfMap.sort();
     this.firstDay = keysOfMap[0];
@@ -46,11 +46,6 @@ export struct Cofeeling {
       this.firstDay = this.todayDate;
     }
 
-    // this.feelings.set(20240509, FEELING.HAPPY);
-    // this.feelings.set(20240713, FEELING.SAD);
-    // this.feelings.set(20240712, FEELING.ULTRA_HAPPY);
-    // this.feelings.set(20240714, FEELING.EXTREMELY_BAD);
-    // this.feelings.set(20240710, FEELING.HAPPY);
   }
 
 
@@ -65,7 +60,7 @@ export struct Cofeeling {
   private totMonth: number = 0;
   @State currentMonth: number = 0;
   // private firstDay : number = (this.toDayY*100 + this.toDayM)*100 + 1; //本月第一天
-  private firstDay: number = 20221109;
+  private firstDay: number = this.todayDate;
   private monthWithFirstDay: number = Math.floor(this.firstDay / 100);
 
   private toDayFeeling : TodayFeeling[] = [

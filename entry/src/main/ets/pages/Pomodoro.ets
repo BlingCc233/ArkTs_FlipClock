@@ -1,12 +1,15 @@
 import { display, RectShape } from '@kit.ArkUI';
 import { curves } from '@kit.ArkUI';
-import { Homo } from './Homo';
 import router from '@ohos.router'
 import { vibrator } from '@kit.SensorServiceKit';
 import { audioHaptic } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { uri } from '@kit.ArkTS';
+import { fileIo } from '@kit.CoreFileKit';
 import { audio } from '@kit.AudioKit';
+import { media } from '@kit.MediaKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 
 
 export enum Stage {
@@ -21,6 +24,11 @@ PersistentStorage.persistProp('longBreak', 10);
 PersistentStorage.persistProp('isRemind', true);
 PersistentStorage.persistProp('isVibration', true);
 
+let  soundPool: media.SoundPool;
+let  audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
 
 @Preview
 @Component
@@ -53,6 +61,8 @@ export struct Pomodoro {
   @State clockOff: number = 0;
   @State clockColor: string = '#fff';
   @State btnAngle: number = 0;
+
+
 
   private buttonAnime() {
     animateTo({
@@ -97,6 +107,47 @@ export struct Pomodoro {
     })
   }
 
+  soundpollPlay(){
+    media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+      if (error) {
+        console.error(`Failed to createSoundPool`)
+        return;
+      } else {
+        soundPool = soundPool_;
+        console.info(`Succeeded in createSoundPool`)
+        let file: fileIo.File;
+        let soundID: number = 0;
+        let streamID: number = 0;
+
+        let fileSize: number = 1; //通过fs.stat()获取size值
+        let uri: string = "";
+        //获取fd的描述信息
+        fileIo.open('..//remind.mp3', fileIo.OpenMode.READ_ONLY).then((file_: fileIo.File) => {
+
+          file = file_;
+          console.info("file fd: " + file.fd);
+          uri = 'fd://' + (file.fd).toString()
+          AlertDialog.show({message:uri})
+          soundPool.load(file.fd, 0, fileSize).then((soundId: number) => {
+            console.info('Succeeded in loading soundpool');
+            soundID = soundId;
+          }, (err: BusinessError) => {
+            console.error('Failed to load soundpool and catch error is ' + err.message);
+          });
+        });
+
+        soundPool.play(soundID,  (error: BusinessError, streamId: number) => {
+          if (error) {
+            console.error(`Failed to play soundpool: errCode is ${error.code}, errMessage is ${error.message}`)
+          } else {
+            streamID = streamId;
+            console.info('Succeeded in playing soundpool, streamId:' + streamId);
+          }
+        });
+      }
+    });
+  }
+
   private countDown() {
     let lastStage = this.curStage;
     let totalSec = (this.curStage == Stage.FOCUS ? this.focusTime * 60 :
@@ -118,6 +169,9 @@ export struct Pomodoro {
             usage: 'notification'
           });
         }
+        if(this.isRemind){
+          this.soundpollPlay();
+        }
         if (lastStage == Stage.FOCUS && this.breakInterval > 0) {
           this.curStage = Stage.BREAK;
           this.breakInterval--;
@@ -137,8 +191,9 @@ export struct Pomodoro {
         this.remainSec = totalSec;
         this.progress = this.defaultTime;
       }
-    }, 1000)
+    }, 100)
   }
+
 
 
 
