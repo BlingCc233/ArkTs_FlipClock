@@ -21,3 +21,6 @@
 ## 示例图片
 <img src="./screenshot/sample2.gif" width="200px"/> 
 
+##
+借鉴了开源项目[恶臭数字论证器](https://github.com/itorr/homo)
+
