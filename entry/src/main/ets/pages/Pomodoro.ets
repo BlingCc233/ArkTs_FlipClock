@@ -430,10 +430,12 @@ export struct Pomodoro {
 
           }
           .width('80%')
-          .layoutWeight(1)
-          .margin({ top: '40vp', left: px2fp(this.widthPx * 0.1) })
+          .margin({ top: 60, left: px2fp(this.widthPx * 0.1) })
           .backgroundColor('#444')
           .borderRadius('20vp')
+
+          Blank()
+            .layoutWeight(1)
 
         }
         .margin({ top: '100vp', bottom: '140vp' })
@@ -464,7 +466,7 @@ export struct Pomodoro {
       )
       .zIndex(2)
 
-    }.margin({ top: 40 }).width('100%').height('100%').backgroundColor(0x232323)
+    }.margin({ top: 20 }).width('100%').height('100%').backgroundColor(0x232323)
 
   }
 

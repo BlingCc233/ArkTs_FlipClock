@@ -51,15 +51,16 @@
   ],
   "entry/src/main/ets/pages/Cofeeling.ets": [
     "Scroller",
+    "Flex",
     "Column",
-    "Row",
     "Text",
     "Blank",
-    "Flex",
+    "Row",
     "ForEach",
+    "Divider",
     "List",
     "ListItem",
-    "AlertDialog",
+    "Button",
     "If"
   ]
 }
