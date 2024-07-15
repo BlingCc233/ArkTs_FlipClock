@@ -191,7 +191,7 @@ export struct Pomodoro {
         this.remainSec = totalSec;
         this.progress = this.defaultTime;
       }
-    }, 100)
+    }, 1000)
   }
 
 
