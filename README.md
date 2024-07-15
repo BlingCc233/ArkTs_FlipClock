@@ -19,5 +19,5 @@
 - [ ] 铃声提醒
 
 ## 示例图片
-<img src="./screenshot/sample1.gif" width="200px"/> 
+<img src="./screenshot/sample2.gif" width="200px"/> 
 
