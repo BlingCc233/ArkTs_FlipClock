@@ -34,6 +34,13 @@
     "TextPickerDialog",
     "If"
   ],
+  "entry/src/main/ets/pages/PageTurningAnimation.ets": [
+    "Column",
+    "Text",
+    "Stack",
+    "Rect",
+    "If"
+  ],
   "entry/src/main/ets/pages/Homo.ets": [
     "Row",
     "Text",
@@ -41,13 +48,6 @@
     "Column",
     "Flex",
     "TextInput",
-    "If"
-  ],
-  "entry/src/main/ets/pages/PageTurningAnimation.ets": [
-    "Column",
-    "Text",
-    "Stack",
-    "Rect",
     "If"
   ],
   "entry/src/main/ets/pages/Cofeeling.ets": [

@@ -160,6 +160,15 @@ export struct Cofeeling {
 
     let monthIndex = (this.monthWithFirstDay - 1) % 100;
     this.currentMonth = (monthIndex + this.viewingMonthIndex) % 12;
+
+    setInterval(()=>{
+
+      let calendar = i18n.getCalendar('zh-Hans');
+      this.toDayY = calendar.get('year');
+      this.toDayM = calendar.get('month');
+      this.toDayD = calendar.get('date');
+      this.todayDate = ((this.toDayY*100)+this.toDayM+1)*100+this.toDayD;
+    }, 43200000)
   }
 
   build() {
