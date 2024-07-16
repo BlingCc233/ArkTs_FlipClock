@@ -16,7 +16,6 @@
 ## Still Working
 - [ ] 桌面卡片
 - [ ] 番茄钟背景音乐
-- [ ] 第三屏UI美化
 
 ## 示例图片
 <img src="./screenshot/sample2.gif" width="200px"/> 
