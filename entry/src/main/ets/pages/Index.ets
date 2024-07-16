@@ -65,7 +65,7 @@ struct Index {
           duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
             animateTo({
               duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
-                animateTo({ duration: 2000, curve: Curve.EaseInOut }, () => {
+                animateTo({ duration: 1000, curve: Curve.EaseInOut }, () => {
                   this.welcomeWordOpacity2 = 1;
                 })
               }
