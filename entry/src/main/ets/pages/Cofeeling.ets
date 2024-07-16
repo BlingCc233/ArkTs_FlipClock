@@ -193,7 +193,7 @@ export struct Cofeeling {
           .padding(10)
           .fontColor(Color.White)
           .backgroundColor('#8fb2c9')
-          .opacity(0.7)
+          .opacity(0.6)
 
         Blank()
         Row() {
@@ -267,7 +267,7 @@ export struct Cofeeling {
             .fontColor('#eaeaea')
             .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.8 })
             .textAlign(TextAlign.Center)
-            .opacity(0.8)
+            .opacity(0.6)
             .onClick(() => {
               this.updateToday();
               this.listScroll.scrollToIndex(this.totMonth, true);
@@ -307,7 +307,7 @@ struct eachMonth {
               // .margin(3)
               .backgroundColor(day.isToday ?
                 (this.feelings.has(this.todayDate) ? this.feelings.get(this.todayDate) : '#666') : day.thisDayColor)
-              .opacity(day.isCurrentMonth ? 0.8 : 0.2)
+              .opacity(day.isCurrentMonth ? 0.6 : 0.2)
           })
         }
         .width('100%')
