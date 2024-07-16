@@ -9,14 +9,14 @@
 
 ## HighLight
 - [X] 完全使用Ark Kit原生组件
-- [X] 小而美
+- [X] 不到1MB，小而美
 - [X] 彩蛋
-- [X] 心情记录
 - [X] 数据持久化
 
 ## Still Working
 - [ ] 桌面卡片
-- [ ] 铃声提醒
+- [ ] 番茄钟背景音乐
+- [ ] 第三屏UI美化
 
 ## 示例图片
 <img src="./screenshot/sample2.gif" width="200px"/> 
