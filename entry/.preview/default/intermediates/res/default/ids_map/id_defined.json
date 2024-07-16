@@ -345,6 +345,10 @@
 			"id":	"0x01000055"
 		}, {
 			"type":	"string",
+			"name":	"reason",
+			"id":	"0x01000056"
+		}, {
+			"type":	"string",
 			"name":	"divider_height",
 			"id":	"0x0100005B"
 		}, {
