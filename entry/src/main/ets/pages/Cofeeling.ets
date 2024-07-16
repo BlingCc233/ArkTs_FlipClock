@@ -39,9 +39,9 @@ export struct Cofeeling {
 
     //找最早的一天
     // 如果第一天存在就设为那一天
-    for(let i = 0;i<2;i++){
-      this.feelings.set(20240717+i, FEELING.UNDEFINE);
-    }
+    // for(let i = 0;i<2;i++){
+    //   this.feelings.set(20240717+i, FEELING.UNDEFINE);
+    // }
     const keysOfMap = Array.from(this.feelings.keys());
     keysOfMap.sort();
     this.firstDay = keysOfMap[0];

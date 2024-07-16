@@ -126,7 +126,7 @@ class Index extends ViewPU {
                         duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
                             Context.animateTo({
                                 duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
-                                    Context.animateTo({ duration: 2000, curve: Curve.EaseInOut }, () => {
+                                    Context.animateTo({ duration: 1000, curve: Curve.EaseInOut }, () => {
                                         this.welcomeWordOpacity2 = 1;
                                     });
                                 }
