@@ -60,6 +60,9 @@ export struct Cofeeling {
   private totMonth: number = 0;
   @State currentMonth: number = 0;
   // private firstDay : number = (this.toDayY*100 + this.toDayM)*100 + 1; //本月第一天
+  @StorageLink('welcomeWordOpacity1') welcomeWordOpacity1: number = 0;
+  @StorageLink('welcomeWordOpacity2') welcomeWordOpacity2: number = 0;
+
   private firstDay: number = this.todayDate;
   private monthWithFirstDay: number = Math.floor(this.firstDay / 100);
   private toDayFeeling: TodayFeeling[] = [
@@ -159,7 +162,11 @@ export struct Cofeeling {
     let monthIndex = (this.monthWithFirstDay - 1) % 100;
     this.currentMonth = (monthIndex + this.viewingMonthIndex) % 12;
 
+
+
+
   }
+
 
   updateToday() {
     let calendar = i18n.getCalendar('zh-Hans');
@@ -176,12 +183,23 @@ export struct Cofeeling {
       alignItems: ItemAlign.Center
     }) {
 
-      Text('How are you?')
-        .fontColor('#eaeaea')
-        .textAlign(TextAlign.Center)
-        .width('100%')
-        .fontSize(30)
-        .fontWeight(FontWeight.Lighter)
+      Stack() {
+        Text(`How's your day?`)
+          .fontColor('#eaeaea')
+          .textAlign(TextAlign.Center)
+          .width('100%')
+          .opacity(this.welcomeWordOpacity2)
+          .fontSize(30)
+          .fontWeight(FontWeight.Lighter)
+
+        Text(`You did well`)
+          .fontColor('#eaeaea')
+          .textAlign(TextAlign.Center)
+          .width('100%')
+          .opacity(this.welcomeWordOpacity1)
+          .fontSize(30)
+          .fontWeight(FontWeight.Lighter)
+      }
 
       Blank()
 

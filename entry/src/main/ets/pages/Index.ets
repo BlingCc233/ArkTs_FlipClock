@@ -12,7 +12,8 @@ import {Homo} from './Homo'
 
 
 
-
+AppStorage.setOrCreate('welcomeWordOpacity1', 0);
+AppStorage.setOrCreate('welcomeWordOpacity2', 0);
 
 @Entry
 @Component
@@ -20,6 +21,8 @@ struct Index {
   //顶部导航栏
   @State tabArray: Array<TabItem> = initTabData();
   @State currentIndex: number = 0;
+  @StorageLink('welcomeWordOpacity1') welcomeWordOpacity1: number = 0;
+  @StorageLink('welcomeWordOpacity2') welcomeWordOpacity2: number = 0;
 
   @Builder
   tabBuilder(index: number, name: string) {
@@ -49,6 +52,34 @@ struct Index {
     .barHeight('52vp')
     .padding({
       top: '30vp'
+    })
+    .onChange(()=>{
+      //准备工作结束后问候一下
+
+      if(this.currentIndex == 2) {
+        this.welcomeWordOpacity1 = 0;
+        this.welcomeWordOpacity2 = 0;
+
+        animateTo({
+          duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
+            animateTo({
+              duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
+                animateTo({ duration: 2000, curve: Curve.EaseInOut }, () => {
+                  this.welcomeWordOpacity2 = 1;
+                })
+              }
+            }, () => {
+              this.welcomeWordOpacity1 = 0;
+            })
+          }
+        }, () => {
+          this.welcomeWordOpacity1 = 1;
+        })
+      }
+      else {
+        this.welcomeWordOpacity2 = 0;
+      }
+
     })
     .width(Constants.PERCENT_MAX)
     .height(Constants.PERCENT_MAX)
