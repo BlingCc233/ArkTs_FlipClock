@@ -41,7 +41,7 @@ export struct Pomodoro {
   @StorageLink('isRemind') isRemind: boolean = true;
   @StorageLink('isVibration') isVibration: boolean = true;
   @State defaultTime: number = this.focusTime;
-  private breakInterval: number = 4;
+  private breakInterval: number = 3;
   @State remainTime: number = this.defaultTime;
   @State select: number = 2;
   private positionY: number = 0;
@@ -613,22 +613,34 @@ export struct Pomodoro {
 
   onCancel() {
     this.defaultTime = this.focusTime;
+    this.remainTime = this.focusTime;
+    this.remainSec = this.remainTime*60;
     this.progress = this.focusTime;
     this.curStage = Stage.FOCUS;
+    this.breakInterval = 3;
+    clearInterval(this.timer);
     console.info('Callback when the first button is clicked')
   }
 
   onAccept() {
     this.defaultTime = this.focusTime;
+    this.remainTime = this.focusTime;
+    this.remainSec = this.remainTime*60;
     this.progress = this.focusTime;
     this.curStage = Stage.FOCUS;
+    this.breakInterval = 3;
+    clearInterval(this.timer);
     console.info('Callback when the second button is clicked')
   }
 
   exitApp() {
     this.defaultTime = this.focusTime;
+    this.remainTime = this.focusTime;
+    this.remainSec = this.remainTime*60;
     this.progress = this.focusTime;
     this.curStage = Stage.FOCUS;
+    this.breakInterval = 3;
+    clearInterval(this.timer);
     console.info('Click the callback in the blank area')
   }
 

@@ -39,9 +39,9 @@ export struct Cofeeling {
 
     //找最早的一天
     // 如果第一天存在就设为那一天
-    // for(let i = 0;i<2;i++){
-    //   this.feelings.set(20240713+i, FEELING.ULTRA_HAPPY);
-    // }
+    for(let i = 0;i<2;i++){
+      this.feelings.set(20240717+i, FEELING.UNDEFINE);
+    }
     const keysOfMap = Array.from(this.feelings.keys());
     keysOfMap.sort();
     this.firstDay = keysOfMap[0];
@@ -229,7 +229,7 @@ export struct Cofeeling {
       .padding({ left: 24, right: 24 })
       .margin({ top: 10, bottom: 20 })
 
-      Divider().strokeWidth(0.6).color(Color.White).opacity(0.4).width('90%')
+      Divider().strokeWidth(0.6).color(Color.White).opacity(0.2).width('90%')
 
 
       List({ space: 40, scroller: this.listScroll, initialIndex: this.arrForList.length - 1 }) {
@@ -253,6 +253,9 @@ export struct Cofeeling {
         this.currentMonth = (monthIndex + this.viewingMonthIndex) % 12;
       })
 
+      Divider().strokeWidth(0.6).color(Color.White).opacity(0.2).width('90%')
+
+
       Blank()
 
 
@@ -267,7 +270,7 @@ export struct Cofeeling {
             .fontColor('#eaeaea')
             .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.8 })
             .textAlign(TextAlign.Center)
-            .opacity(0.6)
+            .opacity(0.7)
             .onClick(() => {
               this.updateToday();
               this.listScroll.scrollToIndex(this.totMonth, true);
@@ -307,7 +310,7 @@ struct eachMonth {
               // .margin(3)
               .backgroundColor(day.isToday ?
                 (this.feelings.has(this.todayDate) ? this.feelings.get(this.todayDate) : '#666') : day.thisDayColor)
-              .opacity(day.isCurrentMonth ? 0.6 : 0.2)
+              .opacity(day.isCurrentMonth ? 0.7 : 0.2)
           })
         }
         .width('100%')

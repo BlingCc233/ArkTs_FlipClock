@@ -1,5 +1,11 @@
 {
-  "entry/src/main/ets/pages/Cofeeling.ets": [
-    "ohos.i18n"
+  "entry/src/main/ets/pages/Pomodoro.ets": [
+    "ohos.display",
+    "ohos.curves",
+    "ohos.router",
+    "ohos.vibrator",
+    "ohos.file.fs",
+    "ohos.multimedia.audio",
+    "ohos.multimedia.media"
   ]
 }
