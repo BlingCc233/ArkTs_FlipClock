@@ -14,7 +14,7 @@ export function initTabData(): TabItem[] {
 
 const TabItemData: TabItem[] = [
   new TabItem(0, 'Clock'),
-  new TabItem(1, 'Pomodoro'),
-  new TabItem(2, 'Mood')
+  new TabItem(1, 'Mood'),
+  new TabItem(2, 'Pomodoro')
 ];
 

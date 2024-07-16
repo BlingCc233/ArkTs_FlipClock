@@ -54,6 +54,7 @@
     "Scroller",
     "Flex",
     "Column",
+    "Stack",
     "Text",
     "Blank",
     "Row",

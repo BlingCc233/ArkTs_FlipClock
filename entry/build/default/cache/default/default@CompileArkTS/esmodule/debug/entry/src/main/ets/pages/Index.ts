@@ -13,6 +13,8 @@ interface EachContent_Params {
 interface Index_Params {
     tabArray?: Array<TabItem>;
     currentIndex?: number;
+    welcomeWordOpacity1?: number;
+    welcomeWordOpacity2?: number;
 }
 import Constants from "@bundle:com.blingcc.flipclock/entry/ets/common/CommonConstants";
 import display from "@ohos:display";
@@ -22,6 +24,8 @@ import type { TabItem } from '../viewmodel/TabItem';
 import { Pomodoro } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Pomodoro";
 import { PageTurningAnimation, enumT } from "@bundle:com.blingcc.flipclock/entry/ets/pages/PageTurningAnimation";
 import { Cofeeling } from "@bundle:com.blingcc.flipclock/entry/ets/pages/Cofeeling";
+AppStorage.setOrCreate('welcomeWordOpacity1', 0);
+AppStorage.setOrCreate('welcomeWordOpacity2', 0);
 class Index extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -29,7 +33,9 @@ class Index extends ViewPU {
             this.paramsGenerator_ = paramsLambda;
         }
         this.__tabArray = new ObservedPropertyObjectPU(initTabData(), this, "tabArray");
-        this.__currentIndex = new ObservedPropertySimplePU(0, this, "currentIndex");
+        this.__currentIndex = new ObservedPropertySimplePU(1, this, "currentIndex");
+        this.__welcomeWordOpacity1 = this.createStorageLink('welcomeWordOpacity1', 0, "welcomeWordOpacity1");
+        this.__welcomeWordOpacity2 = this.createStorageLink('welcomeWordOpacity2', 0, "welcomeWordOpacity2");
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
@@ -46,10 +52,14 @@ class Index extends ViewPU {
     purgeVariableDependenciesOnElmtId(rmElmtId) {
         this.__tabArray.purgeDependencyOnElmtId(rmElmtId);
         this.__currentIndex.purgeDependencyOnElmtId(rmElmtId);
+        this.__welcomeWordOpacity1.purgeDependencyOnElmtId(rmElmtId);
+        this.__welcomeWordOpacity2.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__tabArray.aboutToBeDeleted();
         this.__currentIndex.aboutToBeDeleted();
+        this.__welcomeWordOpacity1.aboutToBeDeleted();
+        this.__welcomeWordOpacity2.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -67,6 +77,20 @@ class Index extends ViewPU {
     }
     set currentIndex(newValue: number) {
         this.__currentIndex.set(newValue);
+    }
+    private __welcomeWordOpacity1: ObservedPropertyAbstractPU<number>;
+    get welcomeWordOpacity1() {
+        return this.__welcomeWordOpacity1.get();
+    }
+    set welcomeWordOpacity1(newValue: number) {
+        this.__welcomeWordOpacity1.set(newValue);
+    }
+    private __welcomeWordOpacity2: ObservedPropertyAbstractPU<number>;
+    get welcomeWordOpacity2() {
+        return this.__welcomeWordOpacity2.get();
+    }
+    set welcomeWordOpacity2(newValue: number) {
+        this.__welcomeWordOpacity2.set(newValue);
     }
     tabBuilder(index: number, name: string, parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -87,11 +111,37 @@ class Index extends ViewPU {
     }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Tabs.create({ barPosition: BarPosition.Start });
+            Tabs.create({ barPosition: BarPosition.Start, index: 1 });
             Tabs.barWidth(Constants.PERCENT_MAX);
             Tabs.barHeight('52vp');
             Tabs.padding({
                 top: '30vp'
+            });
+            Tabs.onChange(() => {
+                //准备工作结束后问候一下
+                if (this.currentIndex == 1) {
+                    this.welcomeWordOpacity1 = 0;
+                    this.welcomeWordOpacity2 = 0;
+                    Context.animateTo({
+                        duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
+                            Context.animateTo({
+                                duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
+                                    Context.animateTo({ duration: 2000, curve: Curve.EaseInOut }, () => {
+                                        this.welcomeWordOpacity2 = 1;
+                                    });
+                                }
+                            }, () => {
+                                this.welcomeWordOpacity1 = 0;
+                            });
+                        }
+                    }, () => {
+                        this.welcomeWordOpacity1 = 1;
+                    });
+                }
+                else {
+                    this.welcomeWordOpacity1 = 0;
+                    this.welcomeWordOpacity2 = 0;
+                }
             });
             Tabs.width(Constants.PERCENT_MAX);
             Tabs.height(Constants.PERCENT_MAX);
@@ -113,7 +163,7 @@ class Index extends ViewPU {
                                 if (isInitialRender) {
                                     let componentCall = new EachContent(this, {
                                         whichPage: item.id
-                                    }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 42 });
+                                    }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 46 });
                                     ViewPU.create(componentCall);
                                     let paramsLambda = () => {
                                         return {
@@ -260,12 +310,12 @@ class EachContent extends ViewPU {
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
-            if (this.whichPage == 1) {
+            if (this.whichPage == 2) {
                 this.ifElseBranchUpdateFunction(0, () => {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 94 });
+                                let componentCall = new Pomodoro(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 127 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};
@@ -340,7 +390,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.HOUR
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 122 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 155 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -376,7 +426,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.MIN
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 129 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 162 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -412,7 +462,7 @@ class EachContent extends ViewPU {
                                     rotaRate: -90,
                                     originalAngle: 0,
                                     timeT: enumT.SEC
-                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 137 });
+                                }, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 170 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {
@@ -446,12 +496,12 @@ class EachContent extends ViewPU {
         If.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
-            if (this.whichPage == 2) {
+            if (this.whichPage == 1) {
                 this.ifElseBranchUpdateFunction(0, () => {
                     {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             if (isInitialRender) {
-                                let componentCall = new Cofeeling(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 155 });
+                                let componentCall = new Cofeeling(this, {}, undefined, elmtId, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 188 });
                                 ViewPU.create(componentCall);
                                 let paramsLambda = () => {
                                     return {};

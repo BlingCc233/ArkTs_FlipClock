@@ -1,11 +1,6 @@
 {
-  "entry/src/main/ets/pages/Pomodoro.ets": [
+  "entry/src/main/ets/pages/Index.ets": [
     "ohos.display",
-    "ohos.curves",
-    "ohos.router",
-    "ohos.vibrator",
-    "ohos.file.fs",
-    "ohos.multimedia.audio",
-    "ohos.multimedia.media"
+    "ohos.hilog"
   ]
 }

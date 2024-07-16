@@ -20,7 +20,7 @@ AppStorage.setOrCreate('welcomeWordOpacity2', 0);
 struct Index {
   //顶部导航栏
   @State tabArray: Array<TabItem> = initTabData();
-  @State currentIndex: number = 0;
+  @State currentIndex: number = 1;
   @StorageLink('welcomeWordOpacity1') welcomeWordOpacity1: number = 0;
   @StorageLink('welcomeWordOpacity2') welcomeWordOpacity2: number = 0;
 
@@ -38,8 +38,9 @@ struct Index {
     .width(Constants.PERCENT_MAX)
   }
 
+
   build() {
-    Tabs({ barPosition: BarPosition.Start }) {
+    Tabs({ barPosition: BarPosition.Start ,index: 1}) {
       ForEach(this.tabArray.slice(0, 3), (item: TabItem) => {
         TabContent() {
           EachContent({
@@ -56,7 +57,7 @@ struct Index {
     .onChange(()=>{
       //准备工作结束后问候一下
 
-      if(this.currentIndex == 2) {
+      if(this.currentIndex == 1) {
         this.welcomeWordOpacity1 = 0;
         this.welcomeWordOpacity2 = 0;
 
@@ -77,6 +78,7 @@ struct Index {
         })
       }
       else {
+        this.welcomeWordOpacity1 = 0;
         this.welcomeWordOpacity2 = 0;
       }
 
@@ -121,7 +123,7 @@ struct EachContent {
 
   build() {
     Column() {
-      if (this.whichPage == 1) {
+      if (this.whichPage == 2) {
         Pomodoro()
       }
       if (this.whichPage == 0) {
@@ -182,7 +184,7 @@ struct EachContent {
         .height(Constants.PERCENT_MAX)
         .backgroundColor($r('app.color.stack_background_color'))
       }
-      if (this.whichPage == 2) {
+      if (this.whichPage == 1) {
         Cofeeling();
       }
     }

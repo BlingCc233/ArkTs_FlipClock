@@ -163,7 +163,21 @@ export struct Cofeeling {
     this.currentMonth = (monthIndex + this.viewingMonthIndex) % 12;
 
 
-
+    animateTo({
+      duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
+        animateTo({
+          duration: 1000, curve: Curve.EaseInOut, onFinish: () => {
+            animateTo({ duration: 2000, curve: Curve.EaseInOut }, () => {
+              this.welcomeWordOpacity2 = 1;
+            })
+          }
+        }, () => {
+          this.welcomeWordOpacity1 = 0;
+        })
+      }
+    }, () => {
+      this.welcomeWordOpacity1 = 1;
+    })
 
   }
 
