@@ -1,5 +1,5 @@
 {
-  "entry/src/main/ets/pages/PageTurningAnimation.ets": [
-    "ohos.display"
+  "entry/src/main/ets/pages/Cofeeling.ets": [
+    "ohos.i18n"
   ]
 }

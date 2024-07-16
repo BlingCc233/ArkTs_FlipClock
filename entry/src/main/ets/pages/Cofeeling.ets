@@ -21,9 +21,9 @@ enum FEELING {
   ULTRA_HAPPY = '#1772b4'
 }
 
-interface TodayFeeling{
-  lever:string,
-  color:FEELING
+interface TodayFeeling {
+  lever: string,
+  color: FEELING
 }
 
 
@@ -34,43 +34,41 @@ PersistentStorage.persistProp("feelings", new Map<number, FEELING>([]));
 @Component
 export struct Cofeeling {
   @StorageLink("feelings") feelings: Map<number, FEELING> = new Map<number, FEELING>([]);
+
   initialMap() {
 
     //找最早的一天
     // 如果第一天存在就设为那一天
-    // this.feelings.set(20240530, FEELING.EXTREMELY_BAD);
+    // for(let i = 0;i<2;i++){
+    //   this.feelings.set(20240713+i, FEELING.ULTRA_HAPPY);
+    // }
     const keysOfMap = Array.from(this.feelings.keys());
     keysOfMap.sort();
     this.firstDay = keysOfMap[0];
-    if(this.firstDay == undefined){
+    if (this.firstDay == undefined) {
       this.firstDay = this.todayDate;
     }
 
   }
-
 
   @State viewingMonthIndex: number = 0;
   private calendar = i18n.getCalendar('zh-Hans');
   private toDayY: number = this.calendar.get('year');
   private toDayM: number = this.calendar.get('month'); //start from 0
   private toDayD: number = this.calendar.get('date');
-
-  @State todayDate:number = ((this.toDayY*100)+this.toDayM+1)*100+this.toDayD;
-
+  @State todayDate: number = ((this.toDayY * 100) + this.toDayM + 1) * 100 + this.toDayD;
   private totMonth: number = 0;
   @State currentMonth: number = 0;
   // private firstDay : number = (this.toDayY*100 + this.toDayM)*100 + 1; //本月第一天
   private firstDay: number = this.todayDate;
   private monthWithFirstDay: number = Math.floor(this.firstDay / 100);
-
-  private toDayFeeling : TodayFeeling[] = [
-    {lever:'BAD', color:FEELING.EXTREMELY_BAD},
-    {lever:'bad', color:FEELING.SAD},
-    {lever:'normal', color:FEELING.NORMAL},
-    {lever:'good', color:FEELING.HAPPY},
-    {lever:'GOOD', color:FEELING.ULTRA_HAPPY}
+  private toDayFeeling: TodayFeeling[] = [
+    { lever: 'BAD', color: FEELING.EXTREMELY_BAD },
+    { lever: 'bad', color: FEELING.SAD },
+    { lever: 'normal', color: FEELING.NORMAL },
+    { lever: 'good', color: FEELING.HAPPY },
+    { lever: 'GOOD', color: FEELING.ULTRA_HAPPY }
   ]
-
 
   refreshData(listIndex: number): Day[] {
     let monthIndex = this.monthWithFirstDay - 1;
@@ -161,20 +159,20 @@ export struct Cofeeling {
     let monthIndex = (this.monthWithFirstDay - 1) % 100;
     this.currentMonth = (monthIndex + this.viewingMonthIndex) % 12;
 
-    setInterval(()=>{
+  }
 
-      let calendar = i18n.getCalendar('zh-Hans');
-      this.toDayY = calendar.get('year');
-      this.toDayM = calendar.get('month');
-      this.toDayD = calendar.get('date');
-      this.todayDate = ((this.toDayY*100)+this.toDayM+1)*100+this.toDayD;
-    }, 43200000)
+  updateToday() {
+    let calendar = i18n.getCalendar('zh-Hans');
+    this.toDayY = calendar.get('year');
+    this.toDayM = calendar.get('month');
+    this.toDayD = calendar.get('date');
+    this.todayDate = ((this.toDayY * 100) + this.toDayM + 1) * 100 + this.toDayD;
   }
 
   build() {
     Flex({
-      direction:FlexDirection.Column,
-      justifyContent:FlexAlign.SpaceAround,
+      direction: FlexDirection.Column,
+      justifyContent: FlexAlign.SpaceAround,
       alignItems: ItemAlign.Center
     }) {
 
@@ -188,15 +186,14 @@ export struct Cofeeling {
       Blank()
 
 
-
       Row() {
         Text(`${this.currentMonth + 1 >= 10 ? '' : '0'}${this.currentMonth + 1}`)
           .fontSize(20)
           .margin({ left: 24 })
-          .padding(8)
+          .padding(10)
           .fontColor(Color.White)
           .backgroundColor('#8fb2c9')
-          .opacity(0.6)
+          .opacity(0.7)
 
         Blank()
         Row() {
@@ -209,6 +206,7 @@ export struct Cofeeling {
         .height('100%')
         .aspectRatio(1)
         .onClick(() => {
+          this.updateToday();
           this.listScroll.scrollToIndex(this.totMonth, true);
         })
       }
@@ -258,24 +256,28 @@ export struct Cofeeling {
       Blank()
 
 
-      Flex({
-        direction:FlexDirection.Row,
-        justifyContent:FlexAlign.SpaceAround
-      }) {
-        ForEach(this.toDayFeeling, (option:TodayFeeling)=>{
-          Button(option.lever)
+
+
+      Row() {
+        ForEach(this.toDayFeeling, (option: TodayFeeling) => {
+          Text(option.lever)
             .backgroundColor(option.color)
-            .width('18%')
+            .width('20%')
+            .height(40)
+            .fontColor('#eaeaea')
             .clickEffect({ level: ClickEffectLevel.MIDDLE, scale: 0.8 })
+            .textAlign(TextAlign.Center)
             .opacity(0.8)
-            .onClick(()=>{
+            .onClick(() => {
+              this.updateToday();
               this.listScroll.scrollToIndex(this.totMonth, true);
-              this.feelings.set(this.todayDate, option.color);
+              animateTo({duration:300,iterations:1,onFinish:()=>{}}, ()=>{
+                this.feelings.set(this.todayDate, option.color);
+              })
             })
 
         })
-      }
-      .width('90%')
+      }.padding({left:24,right:24})
 
     }
     .height('80%')
@@ -286,7 +288,7 @@ export struct Cofeeling {
 @Component
 struct eachMonth {
   @Prop daysData: Day[];
-  @Prop todayDate:number;
+  @Prop todayDate: number;
   @Link feelings: Map<number, FEELING>;
 
   build() {
@@ -300,10 +302,12 @@ struct eachMonth {
               .textAlign(TextAlign.Center)
               .fontSize(16)
               .fontWeight(FontWeight.Normal)
-              .borderRadius(8)
+              // .borderRadius(8)
               .fontColor(day.isToday ? '#ffffff' : '#eaeaea')
-              .backgroundColor(day.isToday ? (this.feelings.has(this.todayDate)?this.feelings.get(this.todayDate) : '#666') : day.thisDayColor)
-              .opacity(day.isCurrentMonth ? 0.9 : 0.2)
+              // .margin(3)
+              .backgroundColor(day.isToday ?
+                (this.feelings.has(this.todayDate) ? this.feelings.get(this.todayDate) : '#666') : day.thisDayColor)
+              .opacity(day.isCurrentMonth ? 0.8 : 0.2)
           })
         }
         .width('100%')
