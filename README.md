@@ -23,6 +23,10 @@
 ## 示例图片
 <img src="./screenshot/sample4.gif" width="200px"/> 
 
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=BlingCc233/ArkTs_FlipClock&type=Date)](https://star-history.com/#BlingCc233/ArkTs_FlipClock)
+
 ##
 借鉴了开源项目[恶臭数字论证器](https://github.com/itorr/homo)
 
